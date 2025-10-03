@@ -1,0 +1,267 @@
+/* Reset 與全域設定 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Zen Kurenaido', sans-serif;
+  background: url('../image/mainpage3tablet.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+/* 置中 container */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px; /* 避免貼邊 */
+  min-height: 100vh;
+}
+
+/* 半透明容器 */
+.container {
+  max-width: 940px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.503);
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* 圓圈格線 */
+.circle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px 40px;
+  justify-items: center;
+  align-items: center;
+}
+
+/* 圓圈項目 */
+.circle-item {
+  text-align: center;
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.circle-link {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.circle-link:hover .circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 圓圈本體 */
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #8ec6e8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文字樣式 */
+.circle-item p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #000000;
+  word-break: break-word;
+}
+
+/* 向上箭頭 */
+.scroll-up {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem; /* ✅ 統一大小 */
+  color: #8ec6e8;     /* ✅ 統一顏色 */
+  text-decoration: none;
+  z-index: 1000;
+  transition: color 0.3s ease;
+}
+
+.scroll-up:hover {
+  color: white;
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* 返回首頁圖標 */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.home-logo img {
+  width: 160px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* 文字與容器動畫 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle-item p {
+    font-size: 1rem;
+  }
+
+  .home-logo img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .circle-item p {
+    font-size: 0.9rem;
+  }
+
+  .home-logo img {
+    width: 120px;
+  }
+
+  /* ✅ 新增：小螢幕時背景圖片替換 */
+  html, body {
+    background: url('../image/page3.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+/* 漢堡選單按鈕 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/* 導覽選單樣式 */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單（初始隱藏） */
+.has-submenu .submenu {
+  display: none; /* 始終渲染在 DOM 中 */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 子選單展開 */
+.has-submenu.active .submenu {
+  max-height: 500px; /* 動畫展開用，設為足夠容納內容的高度 */
+  margin-top: 10px;
+  padding-top: -100px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}

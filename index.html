@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/mymainpage1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 葉子動畫畫布 -->
+  <canvas id="leaf"></canvas>
+
+  <!-- 開場動畫 -->
+  <div class="intro" id="intro">
+    <p>忘れないよ</p>
+    <p>いいえ、絶対に忘れてしまいます</p>
+  </div>
+
+  <!-- 主頁面 -->
+  <div class="container" id="main-content">
+    <header class="header">
+      <h1 class="header-title">Given被贈與的未來</h1>
+      <h2 class="header-subtitle">ギヴン</h2>
+    </header>
+  </div>
+
+  <!-- 往下箭頭按鈕 -->
+  <a href="mymainpage2.html" class="scroll-down" id="scroll-button">&#x25BC;</a>
+
+  <script>
+    // 6秒後執行淡出 intro、淡入主頁面
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('intro');
+        intro.classList.add('fade-out');
+
+        setTimeout(() => {
+          intro.style.display = 'none';
+          document.getElementById('main-content').classList.add('show');
+          document.getElementById('scroll-button').classList.add('show');
+          document.body.style.overflow = 'auto';
+        }, 1000);
+      }, 6000);
+    });
+  </script>
+  <!-- 葉子動畫 JS -->
+  <script src="js/leaf.js"></script>
+</body>
+</html>

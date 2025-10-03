@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/comic.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Great+Vibes&family=Lexend&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 左上 icon 區 -->
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁">
+  </a>
+
+  <!-- 右上漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 書本 3x3 格子 -->
+  <main class="book-grid">
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic1.jpeg" alt="書本1"></div>
+        <div class="book-back"><h3>第一集</h3><p>真冬遇見立夏，音樂與情感的序章展開。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic2.jpeg" alt="書本2"></div>
+        <div class="book-back"><h3>第二集</h3><p>真冬在舞台上將情感透過歌聲傾洩而出。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic3.jpeg" alt="書本3"></div>
+        <div class="book-back"><h3>第三集</h3><p>立夏真冬交往。春秋雨故事展開序幕。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic4.jpeg" alt="書本4"></div>
+        <div class="book-back"><h3>第四集</h3><p>秋雨吵架。春秋藉由同居開始漸漸了解彼此。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic5.jpeg" alt="書本5"></div>
+        <div class="book-back"><h3>第五集</h3><p>真冬的演唱使秋雨放下對方，兩人別離。秋春交往。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic6.jpeg" alt="書本6"></div>
+        <div class="book-back"><h3>第六集</h3><p>立夏開始在SYH當代打，由紀遺留下來的歌曲被柊翻出繼續完成。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic7.jpeg" alt="書本7"></div>
+        <div class="book-back"><h3>第七集</h3><p>柊意識到自己對玄純的感情，玄柊交往，真冬感覺自己被拋下。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic8.jpeg" alt="書本8"></div>
+        <div class="book-back"><h3>第八集</h3><p>真冬迷茫音樂之路，而SYH的表演近在眼前。</p></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-front"><img src="image/comic9.jpeg" alt="書本9"></div>
+        <div class="book-back"><h3>第九集</h3><p>SYH演出由紀的遺作《海へ》，真冬重新找回方向。</p></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // 漢堡選單切換
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // 子選單展開/收合
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+
+    // 點擊書本翻轉，同時關閉其他已翻轉書本
+    document.querySelectorAll('.book').forEach(book => {
+      book.addEventListener('click', () => {
+        const clickedInner = book.querySelector('.book-inner');
+
+        // 關閉其他書本
+        document.querySelectorAll('.book-inner').forEach(inner => {
+          if (inner !== clickedInner) {
+            inner.classList.remove('is-flipped');
+          }
+        });
+
+        // 切換點擊書本翻轉狀態
+        clickedInner.classList.toggle('is-flipped');
+      });
+    });
+  </script>
+</body>
+</html>

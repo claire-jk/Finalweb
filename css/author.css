@@ -1,0 +1,303 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('../image/authortablet.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Cormorant Garamond', 'Zen Kurenaido', 'Arial', sans-serif;
+}
+
+/* 返回首頁圖標 */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 區塊通用設定 */
+.section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 第一頁：作者介紹 */
+.author-card {
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 150px;
+}
+
+.circle-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circle-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 滑鼠移上去：放大＋陰影 */
+.circle-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* 點擊時：縮小一點，營造按壓感 */
+.circle-icon:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.author-text {
+  flex: 1;
+}
+
+.author-text h2 {
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+.author-text p {
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+/* 第二頁：相關作品 */
+.works-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.works {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.work-item {
+  text-align: center;
+  max-width: 250px;
+}
+
+.work-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 15px;
+  border: 3px solid #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 滑鼠移上去：放大＋陰影 */
+.work-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* 點擊時：縮小 */
+.work-circle:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.work-item p {
+  font-size: 0.95em;
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* 響應式調整：手機版上下排列 */
+@media (max-width: 480px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .image-block {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .left-block {
+    animation-name: slideInTop;
+  }
+
+  .right-block {
+    animation-name: slideInBottom;
+  }
+
+  .author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .author-text h2 {
+    font-size: 1.5em;
+  }
+
+  .author-text p {
+    font-size: 0.95em;
+  }
+
+  .circle-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+  }
+
+  @keyframes slideInTop {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInBottom {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ✅ 新增：小螢幕時背景圖片替換 */
+  body {
+    background: url('../image/authorphone.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+/* 漢堡選單按鈕 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/* 導覽選單樣式 */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單（初始隱藏） */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 子選單展開 */
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+  }
+}

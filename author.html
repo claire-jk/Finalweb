@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/author.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lexend:wght@100..900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁">
+  </a>
+
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 作者介紹區 -->
+  <section class="section fade-in">
+    <div class="author-card">
+      <a href="http://x.com/kizu_ntk?s=09" target="_blank" class="circle-icon" title="前往作者 X 帳號">
+        <img src="image/X.png" alt="作者帳號">
+      </a>
+      <div class="author-text">
+        <h2>作者簡介</h2>
+        <p>作者「キヅナツキ」在同人創作時所屬社團名為「刺傷」，使用的名字為ぐさり，於影子籃球員、排球少年、義呆利…等類別均可見到其創作的作品，在同人界中可說是非常活躍，於2013年出版首部商業誌「雪村老師與京君」。但真正讓「キヅナツキ」這個名字較為人所知的則是在2014年底出版的作品「Links」，封面有別於一般的作品，採用分割畫面的方式同時表現出故事中四個短篇所屬於的色彩，畫風唯美之外，故事則是緊扣著「人」所帶來的連結而串聯成的一個完整的故事。雖然各篇章的篇幅都有限，卻能完整表達各自的情感，而「GIVEN 被贈與的未來」則是於新書館出版的雙月刊「Cheri+」上連載，題材則是在前作Links中也使用過的素材「聲音」以及「樂器」，如今GIVEN亦已完結，讓我們靜待刺傷老師的新作出爐。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相關作品區 -->
+  <section class="section fade-in">
+    <h2 class="works-title">相關作品</h2>
+    <div class="works">
+      <div class="work-item">
+        <div class="work-circle">
+          <img src="image/links.jpg" alt="links">
+        </div>
+        <p>Links是由9位主要角色、4對CP及6段美麗的短篇故事拼湊成完整的世界，有點可惜的是因為頁數限制，有些故事沒有交代得非常清楚(也是另一種美?)，儘管如此，故事的意境跟畫面都非常非常的豐富。</p>
+      </div>
+      <div class="work-item">
+        <div class="work-circle">
+          <img src="image/10thmix.jpg" alt="given10th">
+        </div>
+        <p>GIVEN 10th是漫畫GIVEN所有角色十年後的故事，有點像是漫畫的番外篇。10th是在Cheri+連載，如今10th已經完結，之後會推出一本10th單行本。無論是Links還是Given，刺傷老師都對「無論曾經多麼美好燦爛，人都遲早要放下過去繼續往前走」這樣的理念有許多著墨，說是理念好像也怪怪的，因為即使你不想這麼做，時間還是會推著你往這個方向前進。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // 漢堡選單切換
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // 子選單滑動切換
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        // 切換 submenu 的顯示與高度
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+        // ✅ 滾動進場動畫
+    const sections = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

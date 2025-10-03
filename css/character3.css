@@ -1,0 +1,283 @@
+/* 字體設定與全局初始化 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Zen Kurenaido', 'Lexend', 'Arial', sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+  position: relative;
+}
+
+/* 背景圖 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../imagecharacter/秋彥背景圖.jpg') no-repeat center center / cover;
+  opacity: 0.25;
+  z-index: -1;
+  animation: slideInRight 1s ease forwards;
+}
+
+/* ========== 返回首頁圖標 ========== */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* 人物與基本介紹 */
+h1, h2, p {
+  color: white;
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+.character-img {
+  width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: slideInLeft 1.5s ease forwards;
+}
+
+.text-block {
+  animation: slideInLeft 1.2s ease forwards;
+  margin-top: 30px;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.character-info {
+  display: flex;
+  align-items: flex-start;
+  padding: 30px;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 200px;
+}
+
+/* 右側角色選單（通用） */
+.character-menu {
+  position: fixed;
+  top: 200px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  z-index: 100;
+}
+
+.character-menu a {
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-menu img {
+  width: 80px;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-menu img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* 台詞區塊 */
+.quote {
+  max-width: 600px;
+  padding: 30px;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: 30px;
+  text-align: right;
+  animation: slideInRight 1.5s ease forwards;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.quote p {
+  font-size: 1.2em;
+  color: #f0f0f0;
+  line-height: 1.6em;
+}
+
+/* ========== 漢堡選單 ========== */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單 */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* 動畫效果 */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 響應式設計（手機） */
+@media (max-width: 480px) {
+  .character-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .character-img {
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .text-block {
+    text-align: center;
+    margin: 20px auto 0;
+    padding: 16px;
+    font-size: 0.95em;
+  }
+
+  .quote {
+    text-align: center;
+    margin: 20px auto 0;
+    padding: 20px;
+  }
+
+  .character-menu {
+    position: fixed;
+    top: 140px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    z-index: 100;
+  }
+
+  .character-menu img {
+    width: 60px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+
+  .character-menu img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+}

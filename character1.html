@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/character1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lexend:wght@100..900&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 返回首頁圖標 -->
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁" />
+  </a>
+
+  <!-- 人物資訊與圖片 -->
+  <div class="character-info">
+    <div class="slide-in-left text-block">
+      <h1>上山立夏</h1>
+      <h2>所屬樂團: Given、SYH代打</h2>
+      <p>樂團定位:Gt.</p>
+      <p>生日: 8月1日</p>
+      <p>聲優: 內田雄馬</p>
+    </div>
+    <img src="imagecharacter/立夏人物圖.png" alt="立夏人物" class="slide-in-center character-img" />
+  </div>
+
+  <!-- 台詞區塊 -->
+  <div class="slide-in-right quote">
+    <p>擁有驚人的吉他技巧。<br>愛照顧人又重情義，戀愛方面略顯生澀，與真冬交往中。</p>
+  </div>
+
+  <!-- 右側角色縮圖選單 -->
+  <div class="character-menu">
+    <a href="character1.html">
+      <img src="imagecharacter/立夏小圖.jpg" alt="立夏">
+    </a>
+    <a href="character2.html">
+      <img src="imagecharacter/真冬小圖.jpg" alt="真冬">
+    </a>
+    <a href="character.html">
+      <img src="imagecharacter/毛玉.jpg" alt="毛玉小圖">
+    </a>
+  </div>
+
+  <!-- 漢堡選單按鈕 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- JavaScript：漢堡選單與動畫 -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // 子選單切換
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+
+    // 滑入動畫
+    window.addEventListener('load', () => {
+      const leftElements = document.querySelectorAll('.slide-in-left');
+      const rightElements = document.querySelectorAll('.slide-in-right');
+
+      leftElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(-100px)';
+      });
+
+      rightElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(100px)';
+      });
+
+      setTimeout(() => {
+        leftElements.forEach(el => {
+          el.style.transition = 'all 1s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateX(0)';
+        });
+
+        rightElements.forEach(el => {
+          el.style.transition = 'all 1s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateX(0)';
+        });
+      }, 200);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+/* ========== 全局設定 ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Zen Kurenaido', 'Arial', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+  background: url('../image/characterbackgroundtablet.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ========== 返回首頁圖標 ========== */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* ========== 左右箭頭按鈕 ========== */
+.pre-arrow, .next-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  font-size: 2rem;
+  padding: 12px 18px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1600;
+}
+
+.pre-arrow {
+  color: #000;
+  left: 30px;
+}
+
+.next-arrow {
+  color: #000;
+  right: 30px;
+}
+
+.pre-arrow:hover,
+.next-arrow:hover {
+  background-color: #90c9ff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* 漢堡選單按鈕 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/* 導覽選單樣式 */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單（初始隱藏） */
+.has-submenu .submenu {
+  display: none; /* 始終渲染在 DOM 中 */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 子選單展開 */
+.has-submenu.active .submenu {
+  max-height: 500px; /* 動畫展開用，設為足夠容納內容的高度 */
+  margin-top: 10px;
+  padding-top: -100px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+/* ========== 版面主體 ========== */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding-top: 80px;
+}
+
+/* 標題區塊 */
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-top: 100px;
+  margin-right: 10%;
+  text-align: right;
+  color: #8ec6e8;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  align-self: flex-end;
+}
+.character-title {
+  font-size: 3rem;
+  font-family: 'Great Vibes', cursive;
+  margin-bottom: 60px;
+  align-self: flex-end;
+  margin-right: 5%; /* ✅ 原本是 15%，向左移 */
+  text-align: right;
+  color: #081216;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateX(100px);
+  animation: slideInRight 1s forwards;
+}
+
+/* ========== 圓圈圖片樣式 ========== */
+.circle-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  margin-top: 60px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideInUp 1s 0.5s forwards; /* 0.5s 延遲讓標題先進場 */
+}
+
+.circle-grid .row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* ✅ 支援換行 */
+  gap: 40px;       /* ✅ 行內間距更一致 */
+  max-width: 900px;
+  width: 100%;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: visible;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 50%;
+}
+
+.circle p {
+  position: absolute;
+  bottom: -35px;
+  width: 100%;
+  font-family: 'Zen Kurenaido', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  font-size: 1em;
+  color: #000000;
+  margin: 0;
+  padding-top: 8px;
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
+}
+
+.circle:hover img {
+  transform: scale(1.1);
+}
+
+.circle:hover p {
+  transform: scale(1.05);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 響應式（手機） ========== */
+@media (max-width: 480px) {
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .circle p {
+    bottom: -30px;
+    font-size: 0.9em;
+  }
+
+  .circle-grid {
+    gap: 40px;
+  }
+
+  .circle-grid .row {
+    gap: 30px;
+  }
+}

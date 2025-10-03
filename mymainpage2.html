@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/mymainpage2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁">
+  </a>
+
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container fade-in">
+    <header class="header">
+      <h1 class="header-title">故事簡介</h1>
+    </header>
+    <div class="content-area">
+      <article class="main-area">
+        <p>《Given－被贈與的未來》是一部結合青春、音樂與愛情的日本漫畫，由キヅナツキ創作。故事圍繞四位年輕男子所組成的樂團「Given」，描繪他們在追尋音樂夢想的過程中，如何面對過去的創傷、逐漸打開心扉，並在彼此的陪伴下找回生活的希望與情感的真誠。主角之間細膩動人的感情線，搭配充滿力量與情感的音樂演出，使本作成為耽美類型中獨樹一格的存在。這是一段關於「被贈與」情感與勇氣的成長物語，也是一首獻給迷惘靈魂的療癒之歌。</p>
+      </article>
+    </div>
+    <footer class="footer">
+      <p>&copy; Given</p>
+    </footer>
+  </div>
+
+  <a href="index.html" class="scroll-up">&#x25B2;</a>
+  <a href="mymainpage3.html" class="scroll-down">&#x25BC;</a>
+
+  <!-- JavaScript -->
+  <script>
+    // 漢堡選單切換
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // 子選單滑動切換
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        // 切換 submenu 的顯示與高度
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

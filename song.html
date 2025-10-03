@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/song.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Great+Vibes&family=Lexend&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+</head>
+<body class="bg-0">
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁">
+  </a>
+
+  <!-- 響應式標題 -->
+  <h1 class="song-title-main">Song</h1>
+
+  <!-- 中央主區塊 -->
+  <div class="song-main-container">
+    <div class="circle-video">
+      <iframe src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="info-card">
+      <h2 class="song-title">歌曲標題</h2>
+      <p class="song-info">歌曲簡介</p>
+    </div>
+  </div>
+
+<!-- 選擇器圓圈（一般版底部 / 手機版側邊） -->
+<div class="song-selector">
+  <!-- 左側：前6首 -->
+  <div class="song-selector-left">
+    <div class="circle-thumbnail" data-index="0"><img src="image/song0.jpg" alt="キヅアト"></div>
+    <div class="circle-thumbnail" data-index="1"><img src="image/song1.jpg" alt="まるつけ"></div>
+    <div class="circle-thumbnail" data-index="2"><img src="image/song2.jpg" alt="冬のはなし"></div>
+    <div class="circle-thumbnail" data-index="3"><img src="image/song3.jpg" alt="うらがわの存在"></div>
+    <div class="circle-thumbnail" data-index="4"><img src="image/song4.jpg" alt="夜が明ける"></div>
+    <div class="circle-thumbnail" data-index="5"><img src="image/song5.jpg" alt="僕らだけの主題歌"></div>
+  </div>
+
+  <!-- 右側：後5首 -->
+  <div class="song-selector-right">
+    <div class="circle-thumbnail" data-index="6"><img src="image/song6.jpg" alt="パレイド"></div>
+    <div class="circle-thumbnail" data-index="7"><img src="image/song7.jpg" alt="ストレイト"></div>
+    <div class="circle-thumbnail" data-index="8"><img src="image/song8.jpg" alt="スーパーウルトラ I LOVE YOU"></div>
+    <div class="circle-thumbnail" data-index="9"><img src="image/song9.jpg" alt="海へ"></div>
+    <div class="circle-thumbnail" data-index="10"><img src="image/song10.jpg" alt="結言"></div>
+  </div>
+</div>
+
+<!-- 桌機版用：中間一排小圓圈 -->
+<div class="desktop-thumbnails">
+  <div class="circle-thumbnail" data-index="0"><img src="image/song0.jpg" alt="キヅアト"></div>
+  <div class="circle-thumbnail" data-index="1"><img src="image/song1.jpg" alt="まるつけ"></div>
+  <div class="circle-thumbnail" data-index="2"><img src="image/song2.jpg" alt="冬のはなし"></div>
+  <div class="circle-thumbnail" data-index="3"><img src="image/song3.jpg" alt="うらがわの存在"></div>
+  <div class="circle-thumbnail" data-index="4"><img src="image/song4.jpg" alt="夜が明ける"></div>
+  <div class="circle-thumbnail" data-index="5"><img src="image/song5.jpg" alt="僕らだけの主題歌"></div>
+  <div class="circle-thumbnail" data-index="6"><img src="image/song6.jpg" alt="パレイド"></div>
+  <div class="circle-thumbnail" data-index="7"><img src="image/song7.jpg" alt="ストレイト"></div>
+  <div class="circle-thumbnail" data-index="8"><img src="image/song8.jpg" alt="スーパーウルトラ I LOVE YOU"></div>
+  <div class="circle-thumbnail" data-index="9"><img src="image/song9.jpg" alt="海へ"></div>
+  <div class="circle-thumbnail" data-index="10"><img src="image/song10.jpg" alt="結言"></div>
+</div>
+
+
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- JavaScript -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+
+    const totalSongs = 11;
+    let currentIndex = 0;
+
+    const body = document.body;
+    const videoEl = document.querySelector('.circle-video iframe');
+    const videoWrapper = document.querySelector('.circle-video');
+    const infoCard = document.querySelector('.info-card');
+    const titleEl = document.querySelector('.song-title');
+    const infoEl = document.querySelector('.song-info');
+
+    const songData = [
+      { title: "キヅアト",info: "歌曲出處: Given被贈與的未來 動畫op",extra: "キヅアト是Centimillimental的出道作，也是動畫版的片頭曲，在創作這首歌前他便認為op是這部動畫的入口，所以必須100%要是Given的「臉」。",  videoUrl: "https://www.youtube.com/embed/ZJNP1MYv8Ok?si=58gfSAk64RqS_FdR" },
+      { title: "まるつけ", info: "歌曲出處: Given被贈與的未來 動畫ed",extra: "「まるつけ」可譯為「兜圈」或「畫圈」，象徵真冬在迷茫中不斷徘徊。歌詞中多次重複的「どうかな」表現他渴望解答的心情。旋律從平靜開始，逐漸激昂，最後回歸寧靜，如同真冬在經歷痛苦與徬徨後，終於遇見能一同走過難關的立夏。",  videoUrl: "https://www.youtube.com/embed/hhhDFl0_Avg?si=wxAyqEvs-BlnELd9" },
+      { title: "冬のはなし", info: "歌曲出處: Given被贈與的未來 動畫插曲",extra: "這首歌是由紀離世後，真冬首次將思念化為歌聲，初次演唱時帶著壓抑許久的悲傷與傾瀉的情緒。後來在劇場版海邊場景再度出現時，真冬已學會將由紀安放在心中，唱法也多了一份釋懷與坦然。",  videoUrl: "https://www.youtube.com/embed/nK9WuY-v7o0?si=PiCCn6OTBmwxbehm" },
+      { title: "うらがわの存在", info: "演歌曲出處: Given被贈與的未來 反面的存在--劇場版",extra: "是一首純粹表達戀愛情感的歌曲。這部劇場版算是一個小番外，裡面講述著真冬在創作出夜が明ける之前的日常。而這首歌便是在講述夏冬兩個反面的存在，卻在交流中互相用自己彌補了對方的空缺。",  videoUrl: "https://www.youtube.com/embed/tf8nBIN6zuQ?si=NAdZc2Ce5v2RgEpc" },
+      { title: "夜が明ける", info: "歌曲出處: Given被贈與的未來--劇場版",extra: "「夜が明ける（天終將明）」有兩層含意：悲觀地看是「即使無法擺脫過去，明日仍會到來」；樂觀地看則是「長夜終將過去，光明與希望會來臨」。既然未來未定，就代表仍有希望。別擔心，勇敢放手吧，明日終會到來。",  videoUrl: "https://www.youtube.com/embed/N-sDi33SyrI?si=jEwyqPsVrLzm1cO-" },
+      { title: "僕らだけの主題歌", info: "歌曲出處: Given被贈與的未來--劇場版",extra: "這首劇場版主題曲隱喻春、秋、雨三位主角的故事。雨月與秋彥即將分別，各自踏上尋找歸屬的旅程，但共度的時光已融入歌中、留存在記憶裡；而春樹與秋彥也終於坦白心意，歷經波折後，分岔的道路再次交會。",  videoUrl: "https://www.youtube.com/embed/7-qQ8kJLWO0?si=ZFwWbvGaN8DM2GRC" },
+      { title: "パレイド", info: "歌曲出處: Given被贈與的未來 柊mix--劇場版",extra: "這首歌由 syh 的柊演唱，風格與真冬創作的作品不同。真冬習慣壓抑情感，曲風較內斂；而性格外向的柊，創作則更活潑、偏向流行風，常帶來正面能量。此曲也在海邊劇場版中出現過一小段。",  videoUrl: "https://www.youtube.com/embed/PeNGASaGlZU?si=ukEwSCK2HR89sSMw" },
+      { title: "ストレイト", info: "歌曲出處: Given被贈與的未來 柊mix--劇場版",extra: "這首歌也是syh的歌曲，如同柊的個性一般，這首歌也是非常正向而且曲調輕快活潑的歌風。這首歌在去海邊劇場版也有出現一小段。",  videoUrl: "https://www.youtube.com/embed/69mf3IOvQik?si=5ofEiyReV_OYg8vE" },
+      { title: "スーパーウルトラ I LOVE YOU", info: "歌曲出處: Given被贈與的未來 柊mix--劇場版",extra: "這首歌是柊mix的主題曲，描寫主角柊與玄純在察覺彼此心意後的情感轉變與奔向對方的過程。歌詞多以玄純視角出發，展現不求回報、如忠犬般唯一的愛。",  videoUrl: "https://www.youtube.com/embed/tlfTzsMeoR4?si=oiabqRhIH4-jxjnZ" },
+      { title: "海へ", info: "歌曲出處: Given被贈與的未來--劇場版",extra: "這首歌《海へ》是從由紀生前便開始創作的作品，由柊在他過世後交給立夏完成。間奏旋律來自真冬當年的哼唱，最終保留在成品中，也曾出現在真冬其他作品裡。這首歌象徵放下與釋懷：對立夏是將由紀歸還給真冬；對真冬是走出過去；對柊與玄純，則是替由紀完成未竟的心願。",  videoUrl: "https://www.youtube.com/embed/AhRjN_4ApuU?autoplay=1" },
+      { title: "結言", info: "歌曲出處: Given被贈與的未來--劇場版",extra: "「即使我終將死去，只要這首歌被哼唱，我就仍存在」——由紀在另一個世界持續聆聽心上人的歌聲。正如雨月所說：「即使失去一切，也想永存在音樂中。」音樂寄託了過去、現在與未來。這份柔軟而沉重的情感，是由紀的最後牽掛，也是立夏獻給真冬的禮物。",  videoUrl: "https://www.youtube.com/embed/zWEi0D0ahY8?si=n1Wzs6hMPcMOQ3cI" }
+    ];
+
+    function updateDisplay() {
+      for (let i = 0; i < totalSongs; i++) {
+        body.classList.remove(`bg-${i}`);
+      }
+      body.classList.add(`bg-${currentIndex}`);
+      const song = songData[currentIndex];
+      videoEl.src = song.videoUrl;
+      titleEl.textContent = song.title;
+      infoEl.textContent = `${song.info}｜${song.extra}`;
+
+      videoWrapper.classList.remove('active');
+      infoCard.classList.remove('active');
+      setTimeout(() => {
+        videoWrapper.classList.add('active');
+        infoCard.classList.add('active');
+      }, 100);
+    }
+
+    document.querySelectorAll('.circle-thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', function () {
+        const index = parseInt(this.getAttribute('data-index'));
+        currentIndex = index;
+        updateDisplay();
+      });
+    });
+
+    updateDisplay();
+
+    // IntersectionObserver for animation
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-slidein');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    observer.observe(document.getElementById('mainContainer'));
+  </script>
+</body>
+</html>

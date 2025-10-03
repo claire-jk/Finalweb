@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Given 被贈與的未來</title>
+
+  <!-- favicon 與 manifest 設定 -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Given" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- 字體與樣式 -->
+  <link rel="stylesheet" href="css/character.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Great+Vibes&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 返回首頁圖標 -->
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁" />
+  </a>
+
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 主標題 -->
+  <h1 class="main-title">登場人物</h1>
+
+<!-- 圓形人物圖 -->
+<div class="circle-grid">
+  <div class="row">
+    <a href="character1.html" class="circle">
+      <img src="imagecharacter/夏冬.jpg" alt="角色1">
+      <p>立夏/真冬</p>
+    </a>
+    <a href="character3.html" class="circle">
+      <img src="imagecharacter/春秋.jpg" alt="角色2">
+      <p>秋彥/春樹</p>
+    </a>
+    <a href="character5.html" class="circle">
+      <img src="imagecharacter/玄柊.jpg" alt="角色3">
+      <p>玄純/柊</p>
+    </a>
+  </div>
+  <div class="row">
+    <a href="character7.html" class="circle">
+      <img src="imagecharacter/雨月.avif" alt="角色4">
+      <p>雨月</p>
+    </a>
+    <a href="character8.html" class="circle">
+      <img src="imagecharacter/由紀.jpg" alt="角色5">
+      <p>由紀</p>
+    </a>
+  </div>
+</div>
+
+  <!-- JS 控制 -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const parentLi = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        if (submenu.style.display === 'block') {
+          submenu.style.maxHeight = '0';
+          submenu.style.display = 'none';
+          parentLi.classList.remove('active');
+        } else {
+          submenu.style.display = 'block';
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          parentLi.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

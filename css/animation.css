@@ -1,0 +1,320 @@
+/*返回首頁圖標*/
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/*漢堡選單按鈕*/
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/*導覽選單樣式*/
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單（初始隱藏） */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 子選單展開 */
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/*背景圖 & 全局樣式*/
+body {
+  margin: 0;
+  padding-top: 120px; /* 頁面往下推，避免被固定元素遮住 */
+  font-family: 'Zen Kurenaido', 'Noto Serif JP', serif;
+  background: url('../imageanimation/animationbackgroundtablet.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/*小框容器 (作品列表)*/
+.container {
+  max-width: 1200px;
+  margin: 80px auto 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* 小框項目 */
+.item {
+  display: block;
+  max-width: 300px;
+  flex: 1 1 180px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.item p {
+  margin: 10px;
+  color: #eee;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.item:hover {
+  transform: scale(1.2);
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.item:hover p {
+  opacity: 1;
+}
+
+/*STORY 區塊*/
+.p-main {
+  max-width: 900px;
+  margin: -10% auto; /* 上下留白 */
+  padding: 20px;
+}
+
+.in-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Tab 區塊 */
+.p-story_tab {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* 小螢幕可換行 */
+}
+
+.p-story_tab .tab-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #eee;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.p-story_tab .tab-item:hover {
+  background: #ccc;
+}
+
+.p-story_tab .tab-item.is-current {
+  background: #60b0ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+/*Swiper 分頁器小圓點 & 箭頭*/
+.swiper-pagination {
+  position: absolute;   /* 固定在輪播內 */
+  bottom: 10px;         /* 距離圖片底部 */
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  background: #999;  /* 預設灰色 */
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: #b28cff;  /* 當前頁亮粉紅 */
+  opacity: 1  !important;
+  transform: scale(1.2);
+}
+
+/* Swiper 左右箭頭 */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #333;   /* 預設深灰 */
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+  color: #b28cff;   /* 滑過變粉紅 */
+  transform: scale(1.2);
+}
+
+/* 故事內容 */
+.story-content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Swiper 區塊 */
+.swiper-container {
+  width: 100%;
+  max-width: 900px;
+  height: 450px;
+  margin: 0 auto 30px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: relative; /* 讓 pagination 定位在容器內 */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文字區塊 */
+.story-text {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.95);
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  color: #333;
+  text-align: justify;
+}
+
+/*響應式調整*/
+
+/* 平板以下：顯示漢堡選單 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+/* 手機版 (480px 以下) */
+@media (max-width: 480px) {
+  body {
+    background: url('../imageanimation/animationbackgroundphone.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 80px; /* 減少上方留白 */
+  }
+
+  .home-logo img {
+    width: 100px; /* LOGO 縮小 */
+  }
+
+  .p-main {
+    padding: 10px;
+    margin: 40px auto;
+  }
+
+  .in-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .p-story_tab .tab-item {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .swiper-container {
+    height: 250px; /* 輪播圖縮小 */
+  }
+
+  .story-text {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 12px 15px;
+  }
+
+  .item {
+    flex: 1 1 100%; /* 小框單列顯示 */
+    max-width: 100%;
+  }
+
+  .swiper-pagination {
+    bottom: 5px; /* 手機版再往下 */
+  }
+}
