@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Given被贈與的未來</title>
+  <title>Given 被贈與的未來</title>
 
-  <!-- favicon 與 manifest 設定 -->
+  <!-- favicon -->
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="shortcut icon" href="favicon.ico" />
@@ -13,11 +13,13 @@
   <meta name="apple-mobile-web-app-title" content="Given" />
   <link rel="manifest" href="site.webmanifest" />
 
-  <!-- 字體與樣式 -->
-  <link rel="stylesheet" href="css/mymainpage1.css" />
+  <!-- 字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+
+  <!-- 樣式 -->
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
   <!-- 葉子動畫畫布 -->
@@ -29,34 +31,88 @@
     <p>いいえ、絶対に忘れてしまいます</p>
   </div>
 
-  <!-- 主頁面 -->
-  <div class="container" id="main-content">
-    <header class="header">
-      <h1 class="header-title">Given被贈與的未來</h1>
-      <h2 class="header-subtitle">ギヴン</h2>
-    </header>
-  </div>
+  <a href="index.html" class="home-logo">
+    <img src="image/main-icon.png" alt="返回首頁">
+  </a>
 
-  <!-- 往下箭頭按鈕 -->
-  <a href="mymainpage2.html" class="scroll-down" id="scroll-button">&#x25BC;</a>
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
 
-  <script>
-    // 6秒後執行淡出 intro、淡入主頁面
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const intro = document.getElementById('intro');
-        intro.classList.add('fade-out');
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="character.html">登場角色</a></li>
+          <li><a href="song.html">歌曲</a></li>
+          <li><a href="comicanimation.html">漫畫/動畫</a></li>
+          <li><a href="bandprofile.html">樂團介紹</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
-        setTimeout(() => {
-          intro.style.display = 'none';
-          document.getElementById('main-content').classList.add('show');
-          document.getElementById('scroll-button').classList.add('show');
-          document.body.style.overflow = 'auto';
-        }, 1000);
-      }, 6000);
-    });
-  </script>
-  <!-- 葉子動畫 JS -->
+  <!-- 第一區：開場首頁 -->
+  <section id="section1" class="page section1">
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">Given 被贈與的未來</h1>
+        <h2 class="header-subtitle">ギヴン</h2>
+      </header>
+    </div>
+  </section>
+
+  <!-- 第二區：故事簡介 -->
+  <section id="section2" class="page section2">
+    <div class="container fade-in">
+      <header class="header">
+        <h1 class="header-title">故事簡介</h1>
+      </header>
+      <div class="content-area">
+        <article class="main-area">
+          <p>《Given－被贈與的未來》是一部結合青春、音樂與愛情的日本漫畫，由キヅナツキ創作。故事圍繞四位年輕男子所組成的樂團「Given」，描繪他們在追尋音樂夢想的過程中，如何面對過去的創傷、逐漸打開心扉，並在彼此的陪伴下找回生活的希望與情感的真誠。主角之間細膩動人的感情線，搭配充滿力量與情感的音樂演出，使本作成為耽美類型中獨樹一格的存在。這是一段關於「被贈與」情感與勇氣的成長物語，也是一首獻給迷惘靈魂的療癒之歌。</p>
+        </article>
+      </div>
+      <footer class="footer">
+        <p>&copy; Given</p>
+      </footer>
+    </div>
+  </section>
+
+  <!-- 第三區：功能導覽 -->
+  <section id="section3" class="page section3">
+    <div class="container">
+      <div class="circle-grid">
+        <div class="circle-item">
+          <a href="character.html" class="circle-link"><div class="circle"><img src="image/icon1.jpg" alt="角色1" /></div></a>
+          <p>登場角色</p>
+        </div>
+        <div class="circle-item">
+          <a href="song.html" class="circle-link"><div class="circle"><img src="image/icon2.jpg" alt="歌曲" /></div></a>
+          <p>歌曲</p>
+        </div>
+        <div class="circle-item">
+          <a href="comicanimation.html" class="circle-link"><div class="circle"><img src="image/icon3.jpg" alt="漫畫/動畫" /></div></a>
+          <p>漫畫/動畫</p>
+        </div>
+        <div class="circle-item">
+          <a href="bandprofile.html" class="circle-link"><div class="circle"><img src="image/icon4.jpg" alt="樂團" /></div></a>
+          <p>樂團簡介</p>
+        </div>
+        <div class="circle-item">
+          <a href="author.html" class="circle-link"><div class="circle"><img src="image/icon5.jpg" alt="作者" /></div></a>
+          <p>作者帳號</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script src="js/combined.js"></script>
   <script src="js/leaf.js"></script>
 </body>
 </html>

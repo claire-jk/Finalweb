@@ -1,138 +1,137 @@
-var SAKURA_COUNT = 30;
-var IMAGE_URL = './image/leaf.png';
+// === 基本設定 ===
+const SAKURA_COUNT = 100; // 葉子數量
+const IMAGE_URL = "./image/leaf.png"; // 葉子圖片路徑
+const IMG_SIZE = 24;
 
-var canvas = document.getElementById('leaf');
+// ✅ 先建立圖片物件
+const img = new Image();
+img.src = IMAGE_URL;
+
+const canvas = document.getElementById("leaf");
+const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-var _ctx = canvas.getContext('2d');
-var IMG_SIZE = 24;
+// === 全域變數 ===
+let leaves = [];
+let windRoots = [];
 
-var _img = new Image();
-_img.src = IMAGE_URL;
-_img.onload = play;
-
-var _sakuras = [];
-var windRoots = [];
-
-function setup() {
-  addSakura();
-  canvas.addEventListener('mousemove', function(e) {
-    windRoots.push({x: e.clientX, y: e.clientY, rest:0});
-  });
-}
-setup();
-
-window.addEventListener('resize', () => {
+// === 初始化 ===
+window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
 
-function draw(){
-  _ctx.clearRect(0, 0, canvas.width, canvas.height);
+canvas.addEventListener("mousemove", (e) => {
+  windRoots.push({ x: e.clientX, y: e.clientY, life: 60 });
+});
 
-  var len = _sakuras.length;
-  for (var i=0; i < len; ++i) {
-    fall(_sakuras[i]);
+// === 建立葉子資料 ===
+function addLeaves() {
+  for (let i = 0; i < SAKURA_COUNT; i++) {
+    leaves.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      z: Math.random() * 500,
+      vx: 0.3 + Math.random() * 0.3,
+      vy: 0.5 + Math.random() * 0.3,
+      vz: 0.3 + Math.random() * 0.2,
+      rotationX: Math.random() * 360,
+      rotationY: Math.random() * 360,
+      rotationZ: Math.random() * 360,
+      rotationVx: 5 - 10 * Math.random(),
+      rotationVy: 5 - 10 * Math.random(),
+      rotationVz: 5 - 10 * Math.random(),
+      scaleX: 1,
+      scaleY: 1,
+    });
   }
-  drawSakuras();
 }
 
-function getKyori(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+// === 計算距離 ===
+function getDistance(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-function getNearWindRoot(sakura) {
-  var len = windRoots.length;
-  var wind = null;
-  var kyoriMin = 100;
-  for (var i=0; i < len; ++i) {
-    var w = windRoots[i];
-    var kyori = getKyori(w.x, w.y, sakura.x, sakura.y);
-    if (kyori < kyoriMin) {
-      wind = w;
-      kyoriMin = kyori;
+// === 找最近的風源 ===
+function getNearestWind(leaf) {
+  let nearest = null;
+  let minDist = 150;
+  for (let w of windRoots) {
+    const dist = getDistance(leaf.x, leaf.y, w.x, w.y);
+    if (dist < minDist) {
+      nearest = w;
+      minDist = dist;
     }
   }
-  return wind;
+  return nearest;
 }
 
-function fall(sakura) {
-  sakura.rotationX += sakura.rotationVx + Math.random() * 5;
-  sakura.rotationY += sakura.rotationVy + Math.random() * 5;
-  sakura.rotationZ += sakura.rotationVz + Math.random() * 5;
+// === 葉子下落邏輯 ===
+function fall(leaf) {
+  leaf.rotationX += leaf.rotationVx * 0.1;
+  leaf.rotationY += leaf.rotationVy * 0.1;
+  leaf.rotationZ += leaf.rotationVz * 0.1;
 
-  var vx = sakura.vx + Math.abs(Math.sin(sakura.rotationZ * Math.PI / 180));
-  var vy = sakura.vy + Math.abs(Math.cos(sakura.rotationX * Math.PI / 180));
-  var vz = sakura.vz + Math.abs(Math.sin(sakura.rotationY * Math.PI / 180));
+  // 🔹 調整速度倍率（例如加快 2 倍）
+  const SPEED_MULTIPLIER = 2.0;
 
-  var w = getNearWindRoot(sakura);
-  if (w) {
-    var kyori = getKyori(w.x, w.y, sakura.x, sakura.y);
-    if (kyori <= 0) {
-      vx += 3;
-    } else {
-      vx += (sakura.x - w.x) / kyori * 0.5;
-      vy += (sakura.y - w.y) / kyori * 0.5;
-    }
+  let vx = leaf.vx + Math.sin(leaf.rotationZ * Math.PI / 180) * 0.5;
+  let vy = leaf.vy + Math.cos(leaf.rotationX * Math.PI / 180) * 0.5;
+  let vz = leaf.vz + Math.sin(leaf.rotationY * Math.PI / 180) * 0.2;
+
+  const wind = getNearestWind(leaf);
+  if (wind) {
+    const dist = getDistance(leaf.x, leaf.y, wind.x, wind.y);
+    vx += (wind.x - leaf.x) / dist * 0.2;
+    vy += (wind.y - leaf.y) / dist * 0.2;
   }
 
-  sakura.x += vx;
-  sakura.y += vy;
-  sakura.z -= vz;
+  leaf.x += vx;
+  leaf.y += vy;
+  leaf.z -= vz;
 
-  if(sakura.x > canvas.width) sakura.x = 0;
-  if(sakura.y > canvas.height) sakura.y = -100;
-  if(sakura.z < 0) sakura.z = 500;
+  if (leaf.x > canvas.width + 50) leaf.x = -50;
+  if (leaf.y > canvas.height + 50) leaf.y = -100;
+  if (leaf.z < 0) leaf.z = 500;
 
-  var scale = 1 / Math.max(sakura.z / 200, 0.001);
-  sakura.scaleX = sakura.scaleY = scale;
+  const scale = 1 / Math.max(leaf.z / 200, 0.5);
+  leaf.scaleX = leaf.scaleY = scale;
 }
 
-function drawSakuras() {
-  var len = _sakuras.length;
-  for (var i=0; i < len; ++i) {
-    var s = _sakuras[i];
-    var dispX = (s.x - 250) / Math.max(s.z / 200, 0.001) * 2 + canvas.width / 2;
-    var dispY = (s.y - 250) / Math.max(s.z / 200, 0.001) * 2 + canvas.height / 3;
+// === 繪製葉子 ===
+function drawLeaves() {
+  for (let s of leaves) {
+    const dispX = (s.x - 250) / Math.max(s.z / 200, 0.001) * 2 + canvas.width / 2;
+    const dispY = (s.y - 250) / Math.max(s.z / 200, 0.001) * 2 + canvas.height / 3;
 
-    _ctx.translate(dispX, dispY);
-    _ctx.scale(s.scaleX, s.scaleY);
-    _ctx.rotate(s.rotationZ * Math.PI / 180);
-    _ctx.transform(1, 0, 0, Math.sin(s.rotationX * Math.PI / 180), 0, 0);
-    _ctx.translate(-dispX, -dispY);
+    ctx.save();
+    ctx.translate(dispX, dispY);
+    ctx.scale(s.scaleX, s.scaleY);
+    ctx.rotate(s.rotationZ * Math.PI / 180);
+    ctx.transform(1, 0, 0, Math.sin(s.rotationX * Math.PI / 180), 0, 0);
+    ctx.globalAlpha = Math.min(1, (500 - s.z) / 50);
 
-    _ctx.globalAlpha = Math.min(1, (500 - s.z) / 50);
-    _ctx.drawImage(_img, dispX - IMG_SIZE / 2, dispY - IMG_SIZE / 2, IMG_SIZE, IMG_SIZE);
-    _ctx.globalAlpha = 1;
-
-    _ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(img, -IMG_SIZE / 2, -IMG_SIZE / 2, IMG_SIZE, IMG_SIZE);
+    ctx.restore();
   }
 }
 
-function addSakura() {
-  for (var i=0; i < SAKURA_COUNT; ++i) {
-    var sakura = {};
-    sakura.scaleX = sakura.scaleY = Math.random() * 1.2 + 0.3;
-    sakura.rotationX = Math.random() * 360;
-    sakura.rotationY = Math.random() * 360;
-    sakura.rotationZ = Math.random() * 360;
-    sakura.x = Math.random() * canvas.width;
-    sakura.y = Math.random() * canvas.height - canvas.height;
-    sakura.z = Math.random() * 500;
+// === 主繪圖迴圈 ===
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    sakura.vx = 0.3 + 0.2 * Math.random();
-    sakura.vy = 0.5 * Math.random();
-    sakura.vz = 0.3 + 0.2 * Math.random();
+  // 更新滑鼠風向的壽命
+  windRoots = windRoots.filter((w) => --w.life > 0);
 
-    sakura.rotationVx = 7 - 10 * Math.random();
-    sakura.rotationVy = 7 - 10 * Math.random();
-    sakura.rotationVz = 7 - 10 * Math.random();
+  for (let leaf of leaves) fall(leaf);
+  drawLeaves();
 
-    _sakuras.push(sakura);
-  }
+  requestAnimationFrame(draw);
 }
 
-function play(){
-  setInterval(draw, 1000 / 60); // 60 FPS
-}
+// === 啟動動畫 ===
+img.onload = function () {
+  addLeaves();
+  draw();
+};
