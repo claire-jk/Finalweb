@@ -7,7 +7,10 @@
 html, body {
   height: 100%;
   font-family: 'Zen Kurenaido', sans-serif;
-  background-color: #abd8ff;
+  background-color: #f1ffab;
+  background-image: url(../image/syh.jpg);
+  background-position: right bottom;
+  background-repeat: no-repeat;
   color: #000000;
   animation: fadeSlideIn 1s ease-out; /* 加這行 */
 }
@@ -51,7 +54,7 @@ a:hover {
 
 /* 圖片區塊 */
 .image-section {
-  flex: 1 1 400px;
+  flex: 1 1 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +78,7 @@ a:hover {
 .info-section {
   flex: 1 1 400px;
   background-color: rgba(255, 255, 255, 0.85);
-  padding: 30px;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   font-size: 1.1em;
@@ -101,22 +104,6 @@ a:hover {
     width: 100%;
     height: auto;
   }
-}
-/* 上箭頭連結 */
-.arrow-up {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 40px;
-  color: #6fb5e0;
-  text-decoration: none;
-  transition: color 0.3s;
-  z-index: 1000;
-}
-
-.arrow-up:hover {
-  color: #ffffff;
 }
 
 /*淡入＋上滑*/
@@ -205,5 +192,58 @@ a:hover {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+  }
+}
+
+/* 右側藍色圓圈按鈕（含圖片） */
+.circle-btn {
+  position: fixed;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  background-color: rgba(219, 255, 119, 0.418);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgb(0, 0, 0);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.circle-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  /*filter: brightness(0) invert(1);*/
+  transition: transform 0.3s ease;
+}
+
+.circle-btn:hover {
+  transform: translateY(-50%) scale(1.15);
+  background-color: #dbff5a;
+}
+
+.circle-btn:hover img {
+  transform: scale(1.2);
+}
+
+/* 手機版圓圈移到底部中間 */
+@media (max-width: 768px) {
+  .circle-btn {
+    right: 50%;
+    top: auto;
+    bottom: 30px;
+    transform: translateX(50%);
+  }
+
+  .circle-btn:hover {
+    transform: translateX(50%) scale(1.15);
+  }
+
+  .info-section {
+    transform: none; /* 手機不要往左移 */
   }
 }

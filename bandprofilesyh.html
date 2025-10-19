@@ -64,35 +64,11 @@
     </div>
   </div>
 
-  <a href="bandprofilegiven.html" class="arrow-up" title="前往另一團介紹">&#x25B2;</a>
+  <!-- 右側圓圈按鈕 -->
+  <a href="bandprofilegiven.html" class="circle-btn" title="前往下一個故事">
+    <img src="image/given.jpg" alt="下一頁">
+  </a>
   <!-- JavaScript -->
-  <script>
-    // 漢堡選單切換
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
-    });
-
-    // 子選單滑動切換
-    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-      toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const parentLi = this.parentElement;
-        const submenu = this.nextElementSibling;
-
-        // 切換 submenu 的顯示與高度
-        if (submenu.style.display === 'block') {
-          submenu.style.maxHeight = '0';
-          submenu.style.display = 'none';
-          parentLi.classList.remove('active');
-        } else {
-          submenu.style.display = 'block';
-          submenu.style.maxHeight = submenu.scrollHeight + 'px';
-          parentLi.classList.add('active');
-        }
-      });
-    });
-  </script>
+  <script src="js/hamburger.js"></script>
 </body>
 </html>

@@ -76,62 +76,39 @@
     </ul>
   </nav>
 
+  <!-- JavaScript -->
+  <script src="js/hamburger.js"></script>
+  
   <script>
-    // 漢堡選單切換
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
-    });
-
-    // 子選單滑動切換
-    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-      toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const parentLi = this.parentElement;
-        const submenu = this.nextElementSibling;
-
-        if (submenu.style.display === 'block') {
-          submenu.style.maxHeight = '0';
-          submenu.style.display = 'none';
-          parentLi.classList.remove('active');
-        } else {
-          submenu.style.display = 'block';
-          submenu.style.maxHeight = submenu.scrollHeight + 'px';
-          parentLi.classList.add('active');
-        }
-      });
-    });
-
     // 滑入動畫觸發
-window.addEventListener('load', () => {
-  const leftElements = document.querySelectorAll('.slide-in-left');
-  const rightElements = document.querySelectorAll('.slide-in-right');
+    window.addEventListener('load', () => {
+      const leftElements = document.querySelectorAll('.slide-in-left');
+      const rightElements = document.querySelectorAll('.slide-in-right');
 
-  leftElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateX(-100px)';
-  });
+      leftElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(-100px)';
+      });
 
-  rightElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateX(100px)';
-  });
+      rightElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(100px)';
+      });
 
-  setTimeout(() => {
-    leftElements.forEach(el => {
-      el.style.transition = 'all 1s ease';
-      el.style.opacity = '1';
-      el.style.transform = 'translateX(0)';
+      setTimeout(() => {
+        leftElements.forEach(el => {
+          el.style.transition = 'all 1s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateX(0)';
+        });
+
+        rightElements.forEach(el => {
+          el.style.transition = 'all 1s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateX(0)';
+        });
+      }, 200); // 延遲動畫開始
     });
-
-    rightElements.forEach(el => {
-      el.style.transition = 'all 1s ease';
-      el.style.opacity = '1';
-      el.style.transform = 'translateX(0)';
-    });
-  }, 200); // 延遲動畫開始
-});
   </script>
 </body>
 </html>
