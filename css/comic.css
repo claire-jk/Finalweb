@@ -16,44 +16,6 @@ body {
 }
 
 /* ============================= 
-   漢堡選單（右上角）
-============================= */
-.hamburger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1001;
-  color: #fff;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.hamburger:hover {
-  transform: scale(1.2);
-}
-
-/* ============================= 
-   返回首頁圖標
-============================= */
-.home-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.home-logo img {
-  width: 150px;
-  transition: transform 0.3s ease;
-}
-
-.home-logo img:hover {
-  transform: scale(1.1);
-}
-
-/* ============================= 
    漫畫書本區 3x3
 ============================= */
 .book-grid {
@@ -149,8 +111,110 @@ body {
 }
 
 /* ============================= 
-   導覽選單
+   手機版響應式 (max-width: 480px)
 ============================= */
+@media (max-width: 300px) {
+  /* 背景圖手機版 */
+  body {
+    background-image: url('../image/comicbackgroundtablet.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* 漢堡選單縮小 */
+  .hamburger {
+    font-size: 26px;
+  }
+
+  /* 回首頁圖標縮小 */
+  .home-logo img {
+    width: 120px;
+  }
+
+  /* 書本區單欄排列 */
+  .book-grid {
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+    padding: 80px 5vw 50px;
+  }
+
+  /* 書本卡片自適應 */
+  .book {
+    max-width: 85vw;
+    min-width: 140px;
+    height: auto;
+    min-height: 200px;
+    opacity: 0;
+    transform: translateY(30px);
+    font-size: 0.9em; /* 整體略縮小字體 */
+  }
+
+  .book.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .book-inner {
+    height: 100%;
+  }
+
+  /* 書本背面樣式微調 */
+  .book-back {
+    padding: 15px 12px;      /* 內距略縮小 */
+    border-radius: 10px;
+  }
+
+  .book-back h3 {
+    font-size: 0.85em;       /* 標題變小 */
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;   /* 增加一點間距讓字更清楚 */
+  }
+
+  .book-back p {
+    font-size: 0.75em;       /* 內容文字變小 */
+    line-height: 1.35em;     /* 行距稍微縮短但保留可讀性 */
+    margin: 0;               /* 去掉預設段落間距 */
+    color: #ccc;             /* 字體顏色略亮，對比更明顯 */
+  }
+
+  /* 書本封面圖片自適應 */
+  .book-front img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* 返回首頁圖標 */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* 漢堡選單按鈕 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/* 導覽選單樣式 */
 .nav-menu {
   position: fixed;
   top: 0;
@@ -183,7 +247,7 @@ body {
   transform: translateX(0);
 }
 
-/* 子選單 */
+/* 子選單（初始隱藏） */
 .has-submenu .submenu {
   display: none;
   max-height: 0;
@@ -191,10 +255,14 @@ body {
   transition: max-height 0.4s ease;
   padding-left: 15px;
   list-style: none;
+  margin-top: 0;
+  padding-top: 0;
 }
 
+/* 子選單展開 */
 .has-submenu.active .submenu {
   max-height: 500px;
+  margin-top: 10px;
 }
 
 .has-submenu > a::after {
@@ -203,70 +271,9 @@ body {
   margin-left: 5px;
 }
 
-/* ============================= 
-   手機版響應式 (max-width: 480px)
-============================= */
-@media (max-width: 300px) {
-
-  /* 背景圖手機版 */
-  body {
-    background-image: url('../image/comicbackgroundtablet.jpg');
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* 漢堡選單縮小 */
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 768px) {
   .hamburger {
-    font-size: 26px;
-  }
-
-  /* 回首頁圖標縮小 */
-  .home-logo img {
-    width: 120px;
-  }
-
-  /* 書本區單欄排列 */
-  .book-grid {
-    grid-template-columns: 1fr;
-    row-gap: 25px;       /* 上下間距 */
-    padding: 80px 5vw 50px;
-  }
-
-  /* 書本卡片自適應 */
-  .book {
-    max-width: 90vw;     /* 寬度縮小適應手機 */
-    min-width: 140px;    /* 保持最小可讀大小 */
-    height: auto;        /* 高度自適應 */
-    min-height: 200px;   /* 保持最小高度 */
-    opacity: 0;          /* 初始隱藏，滑入動畫用 */
-    transform: translateY(30px); /* 小螢幕滑入位移 */
-  }
-
-  /* 書本滑入動畫 */
-  .book.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* 書本內層翻轉 */
-  .book-inner {
-    height: 100%;
-  }
-
-  /* 書本正反面文字縮小 */
-  .book-back h3 {
-    font-size: 1em;
-  }
-
-  .book-back p {
-    font-size: 0.85em;
-    line-height: 1.3em;
-  }
-
-  /* 書本封面圖片自適應 */
-  .book-front img {
-    height: 100%;
-    object-fit: cover;
+    display: block;
   }
 }
