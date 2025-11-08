@@ -229,28 +229,44 @@ body {
   /* 書本區單欄排列 */
   .book-grid {
     grid-template-columns: 1fr;
-    row-gap: 30px;
+    row-gap: 25px;       /* 上下間距 */
     padding: 80px 5vw 50px;
   }
 
   /* 書本卡片自適應 */
   .book {
-    max-width: 80vw;
-    height: auto;
-    min-height: 160px;
+    max-width: 90vw;     /* 寬度縮小適應手機 */
+    min-width: 140px;    /* 保持最小可讀大小 */
+    height: auto;        /* 高度自適應 */
+    min-height: 200px;   /* 保持最小高度 */
+    opacity: 0;          /* 初始隱藏，滑入動畫用 */
+    transform: translateY(30px); /* 小螢幕滑入位移 */
   }
 
+  /* 書本滑入動畫 */
+  .book.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 書本內層翻轉 */
+  .book-inner {
+    height: 100%;
+  }
+
+  /* 書本正反面文字縮小 */
   .book-back h3 {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .book-back p {
-    font-size: 0.9em;
-    line-height: 1.4em;
+    font-size: 0.85em;
+    line-height: 1.3em;
   }
 
-  /* 書本滑入動畫自適應 */
-  .book.show {
-    transform: translateY(0);
+  /* 書本封面圖片自適應 */
+  .book-front img {
+    height: 100%;
+    object-fit: cover;
   }
 }
