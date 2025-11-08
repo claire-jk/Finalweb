@@ -202,6 +202,26 @@ html, body {
   }
 }
 
+@media (max-width: 768px) {
+  .section2 .container {
+    width: 95%;
+    padding: 20px;
+  }
+  .section2 .header-title { font-size: 2rem; }
+  .section2 .main-area p { font-size: 1rem; line-height: 1.5; }
+}
+
+@media (max-width: 480px) {
+  .section2 .container {
+    width: 90%;
+    padding: 15px;
+  }
+  .section2 .header-title { font-size: 1.5rem; }
+  .section2 .main-area p { font-size: 0.9rem; line-height: 1.4; }
+  .section2 { background-attachment: scroll; }
+}
+
+
 /* 漢堡選單按鈕 */
 .hamburger {
   position: fixed;
