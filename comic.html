@@ -32,7 +32,7 @@
   <nav class="nav-menu" id="navMenu">
     <ul>
       <li><a href="index.html">首頁</a></li>
-      <li><a href="mymainpage2.html">故事簡介</a></li>
+      <li><a href="#section2">故事簡介</a></li>
       <li class="has-submenu">
         <a href="#" class="submenu-toggle">功能導覽</a>
         <ul class="submenu">
@@ -48,58 +48,67 @@
 
   <!-- 書本 3x3 格子 -->
   <main class="book-grid">
+    <!-- 第一本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic1.jpeg" alt="書本1"></div>
         <div class="book-back"><h3>第一集</h3><p>真冬遇見立夏，音樂與情感的序章展開。</p></div>
       </div>
     </div>
+    <!-- 第二本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic2.jpeg" alt="書本2"></div>
-        <div class="book-back"><h3>第二集</h3><p>真冬在舞台上將情感透過歌聲傾洩而出。</p></div>
+        <div class="book-back"><h3>第二集</h3><p>真冬第一次上台演出，將對昔日前男友的思念寫入歌中傾瀉而出。</p></div>
       </div>
     </div>
+    <!-- 第三本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic3.jpeg" alt="書本3"></div>
-        <div class="book-back"><h3>第三集</h3><p>立夏真冬交往。春秋雨故事展開序幕。</p></div>
+        <div class="book-back"><h3>第三集</h3><p>立夏真冬開始交往。</p></div>
       </div>
     </div>
+    <!-- 第四本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic4.jpeg" alt="書本4"></div>
-        <div class="book-back"><h3>第四集</h3><p>秋雨吵架。春秋藉由同居開始漸漸了解彼此。</p></div>
+        <div class="book-back"><h3>第四集</h3><p>春秋雨虐戀篇章開始。春單戀著秋，秋雨兩人吵架分居。</p></div>
       </div>
     </div>
+    <!-- 第五本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic5.jpeg" alt="書本5"></div>
-        <div class="book-back"><h3>第五集</h3><p>真冬的演唱使秋雨放下對方，兩人別離。秋春交往。</p></div>
+        <div class="book-back"><h3>第五集</h3><p>透過真冬的歌聲，秋雨終於看開並和平分手。結尾春秋相戀成為戀人。</p></div>
       </div>
     </div>
+    <!-- 第六本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic6.jpeg" alt="書本6"></div>
-        <div class="book-back"><h3>第六集</h3><p>立夏開始在SYH當代打，由紀遺留下來的歌曲被柊翻出繼續完成。</p></div>
+        <div class="book-back"><h3>第六集</h3><p>立夏被柊邀請去syh代打，柊將真冬的前男友--由紀所寫的歌曲交給立夏，希望他能夠把寫到一半的歌完成。</p></div>
       </div>
     </div>
+    <!-- 第七本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic7.jpeg" alt="書本7"></div>
-        <div class="book-back"><h3>第七集</h3><p>柊意識到自己對玄純的感情，玄柊交往，真冬感覺自己被拋下。</p></div>
+        <div class="book-back"><h3>第七集</h3><p>柊跟玄純經歷了一些事後成為情侶，而因為立夏忙著代打的關係真冬又以為自己再度被同伴及音樂拋下。</p></div>
       </div>
     </div>
+    <!-- 第八本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic8.jpeg" alt="書本8"></div>
-        <div class="book-back"><h3>第八集</h3><p>真冬迷茫音樂之路，而SYH的表演近在眼前。</p></div>
+        <div class="book-back"><h3>第八集</h3><p>真冬繼續迷茫，雨月再次現身。</p></div>
       </div>
     </div>
+    <!-- 第九本 -->
     <div class="book">
       <div class="book-inner">
         <div class="book-front"><img src="image/comic9.jpeg" alt="書本9"></div>
-        <div class="book-back"><h3>第九集</h3><p>SYH演出由紀的遺作《海へ》，真冬重新找回方向。</p></div>
+        <div class="book-back"><h3>第九集</h3><p>立夏終於將由紀未能完成的歌曲演唱給了真冬，遲遲未能解開的心結就此消散。是對過去的道別，並展望未來。</p></div>
       </div>
     </div>
   </main>
@@ -107,20 +116,24 @@
   <!-- JavaScript -->
   <script src="js/hamburger.js"></script>
   <script>
-    // 點擊書本翻轉，同時關閉其他已翻轉書本
+    // 書本翻轉控制
     document.querySelectorAll('.book').forEach(book => {
       book.addEventListener('click', () => {
         const clickedInner = book.querySelector('.book-inner');
-
-        // 關閉其他書本
         document.querySelectorAll('.book-inner').forEach(inner => {
-          if (inner !== clickedInner) {
-            inner.classList.remove('is-flipped');
-          }
+          if (inner !== clickedInner) inner.classList.remove('is-flipped');
         });
-
-        // 切換點擊書本翻轉狀態
         clickedInner.classList.toggle('is-flipped');
+      });
+    });
+
+    // 書本滑入動畫
+    window.addEventListener('load', () => {
+      const books = document.querySelectorAll('.book');
+      books.forEach((book, index) => {
+        setTimeout(() => {
+          book.classList.add('show');
+        }, index * 150); // 依序出現
       });
     });
   </script>

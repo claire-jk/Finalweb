@@ -1,4 +1,6 @@
-/* 字體與背景 */
+/* =============================
+   一、全局樣式與背景
+============================= */
 body {
   margin: 0;
   padding: 0;
@@ -10,6 +12,180 @@ body {
   background-attachment: fixed;
   color: white;
   overflow-x: hidden;
+}
+
+/* =============================
+   二、首頁圖標（左上角）
+============================= */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* =============================
+   三、漢堡選單（右上角）
+============================= */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #fff;                /* ✅ 改為白色，黑背景更清晰 */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.2);
+}
+
+/* =============================
+   五、書本 3×3 排列
+============================= */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 60px;   /* 控制上下距離 */
+  column-gap: 30px; /* 控制左右距離 */
+  padding: 120px 10vw 100px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* 書本卡片容器 */
+.book {
+  width: 100%;
+  max-width: clamp(100px, 30vw, 250px);
+  height: clamp(160px, 43vw, 360px);
+  perspective: 1000px;
+  opacity: 0;                      /* 初始隱藏，用於滑入動畫 */
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  cursor: pointer;
+}
+
+/* ✅ 書本進場動畫效果 */
+.book.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 書本內層翻轉結構 */
+.book-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* 書本翻轉 */
+.book-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* 書本正反面設定 */
+.book-front,
+.book-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* 書本封面 */
+.book-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.book-front img:hover {
+  transform: scale(1.05);
+}
+
+/* 書本背面 */
+.book-back {
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #fff;
+}
+
+.book-back h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.book-back p {
+  font-size: 0.95em;
+  line-height: 1.5em;
+  color: #ddd;
+}
+
+/* =============================
+   六、響應式調整
+============================= */
+
+/* 平板 (小於 1024px) */
+@media (max-width: 1024px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  .home-logo img {
+    width: 120px;
+  }
+}
+
+/* 手機 (小於 480px) */
+@media (max-width: 480px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 100px 12vw;
+  }
+
+  .hamburger {
+    font-size: 26px;
+  }
+
+  .book {
+    max-width: 80vw;
+    height: auto;
+  }
+
+  .book-back h3 {
+    font-size: 1.1em;
+  }
+
+  .book-back p {
+    font-size: 0.9em;
+  }
 }
 
 /* 返回首頁圖標 */
@@ -27,24 +203,6 @@ body {
 
 .home-logo img:hover {
   transform: scale(1.1);
-}
-
-/* 左側返回箭頭樣式 */
-.forward-arrow {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  font-size: 40px;
-  color: rgb(87, 188, 255);
-  text-decoration: none;
-  z-index: 1001;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.forward-arrow:hover {
-  transform: translateY(-50%) scale(1.2);
-  color: #00aaff;
 }
 
 /* 漢堡選單按鈕 */
@@ -94,7 +252,7 @@ body {
 
 /* 子選單（初始隱藏） */
 .has-submenu .submenu {
-  display: none; /* 始終渲染在 DOM 中 */
+  display: none;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
@@ -106,9 +264,8 @@ body {
 
 /* 子選單展開 */
 .has-submenu.active .submenu {
-  max-height: 500px; /* 動畫展開用，設為足夠容納內容的高度 */
+  max-height: 500px;
   margin-top: 10px;
-  padding-top: -100px;
 }
 
 .has-submenu > a::after {
@@ -121,102 +278,5 @@ body {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
-  }
-}
-
-/* 書本 3×3 排列區塊 */
-.book-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 100px 10vw;
-  justify-items: center;
-}
-
-/* 書本卡片：外層控制 perspective */
-.book {
-  width: 100%;
-  max-width: clamp(100px, 30vw, 250px);
-  height: clamp(160px, 43vw, 360px);
-  perspective: 1000px;
-}
-
-/* 翻牌容器 */
-.book-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* 滑鼠懸停翻面（僅桌機支援） */
-@media (hover: hover) {
-  .book:hover .book-inner {
-    transform: rotateY(180deg);
-  }
-}
-
-/* 支援點擊翻面（手機） */
-.book-inner.is-flipped {
-  transform: rotateY(180deg);
-}
-
-/* 正面與背面共用樣式 */
-.book-front, .book-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  backface-visibility: hidden;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-/* 書封面（正面） */
-.book-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* 書簡介（背面） */
-.book-back {
-  background: rgba(255, 255, 255, 0.95);
-  color: #111;
-  transform: rotateY(180deg);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.book-back h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.book-back p {
-  font-size: 0.95em;
-  line-height: 1.5em;
-  color: #333;
-}
-
-/* 響應式設計 */
-@media (max-width: 1024px) {
-  .book-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .book-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 60px 5vw;
   }
 }
