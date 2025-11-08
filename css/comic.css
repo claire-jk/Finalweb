@@ -15,25 +15,6 @@ body {
 }
 
 /* =============================
-   二、首頁圖標（左上角）
-============================= */
-.home-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.home-logo img {
-  width: 150px;
-  transition: transform 0.3s ease;
-}
-
-.home-logo img:hover {
-  transform: scale(1.1);
-}
-
-/* =============================
    三、漢堡選單（右上角）
 ============================= */
 .hamburger {

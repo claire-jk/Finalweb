@@ -57,3 +57,16 @@ window.addEventListener('wheel', e => {
 
   setTimeout(() => (isScrolling = false), 1000);
 });
+
+window.addEventListener('load', () => {
+  // 如果網址中有 #section2 或其他錨點
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      // 稍微延遲確保畫面載入完成再平滑滾動
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    }
+  }
+});
