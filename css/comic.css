@@ -145,28 +145,27 @@ body {
 
 /* 手機 (小於 480px) */
 @media (max-width: 480px) {
+  body {
+    background-image: url('../image/comicbackgroundphone.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+  }
+
   .book-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 100px 12vw;
-  }
-
-  .hamburger {
-    font-size: 26px;
+    padding: 80px 5vw 50px;
   }
 
   .book {
     max-width: 80vw;
     height: auto;
+    min-height: 160px;
   }
 
-  .book-back h3 {
-    font-size: 1.1em;
-  }
-
-  .book-back p {
-    font-size: 0.9em;
-  }
+  .book-back h3 { font-size: 1.1em; }
+  .book-back p { font-size: 0.9em; }
 }
 
 /* 返回首頁圖標 */
