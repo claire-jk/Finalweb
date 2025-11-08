@@ -206,11 +206,11 @@ body {
 /* ============================= 
    手機版響應式 (max-width: 480px)
 ============================= */
-@media (max-width: 480px) {
+@media (max-width: 300px) {
 
   /* 背景圖手機版 */
   body {
-    background-image: url('../image/comicbackgroundphone.jpg');
+    background-image: url('../image/comicbackgroundtablet.jpg');
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
