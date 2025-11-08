@@ -1,5 +1,5 @@
-/* =============================
-   一、全局樣式與背景
+/* ============================= 
+   全局樣式與背景
 ============================= */
 body {
   margin: 0;
@@ -12,10 +12,11 @@ body {
   background-attachment: fixed;
   color: white;
   overflow-x: hidden;
+  transition: background 0.3s ease;
 }
 
-/* =============================
-   三、漢堡選單（右上角）
+/* ============================= 
+   漢堡選單（右上角）
 ============================= */
 .hamburger {
   position: fixed;
@@ -24,7 +25,7 @@ body {
   font-size: 30px;
   cursor: pointer;
   z-index: 1001;
-  color: #fff;                /* ✅ 改為白色，黑背景更清晰 */
+  color: #fff;
   display: block;
   transition: transform 0.3s ease;
 }
@@ -33,14 +34,33 @@ body {
   transform: scale(1.2);
 }
 
-/* =============================
-   五、書本 3×3 排列
+/* ============================= 
+   返回首頁圖標
+============================= */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* ============================= 
+   漫畫書本區 3x3
 ============================= */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 60px;   /* 控制上下距離 */
-  column-gap: 30px; /* 控制左右距離 */
+  row-gap: 60px;
+  column-gap: 30px;
   padding: 120px 10vw 100px;
   justify-items: center;
   align-items: start;
@@ -52,19 +72,19 @@ body {
   max-width: clamp(100px, 30vw, 250px);
   height: clamp(160px, 43vw, 360px);
   perspective: 1000px;
-  opacity: 0;                      /* 初始隱藏，用於滑入動畫 */
+  opacity: 0; /* 初始隱藏，用於滑入動畫 */
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   cursor: pointer;
 }
 
-/* ✅ 書本進場動畫效果 */
+/* 書本滑入動畫 */
 .book.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 書本內層翻轉結構 */
+/* 書本內層翻轉 */
 .book-inner {
   position: relative;
   width: 100%;
@@ -128,76 +148,9 @@ body {
   color: #ddd;
 }
 
-/* =============================
-   六、響應式調整
+/* ============================= 
+   導覽選單
 ============================= */
-
-/* 平板 (小於 1024px) */
-@media (max-width: 1024px) {
-  .book-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-  }
-  .home-logo img {
-    width: 120px;
-  }
-}
-
-/* 手機 (小於 480px) */
-@media (max-width: 480px) {
-  body {
-    background-image: url('../image/comicbackgroundphone.jpg');
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .book-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 80px 5vw 50px;
-  }
-
-  .book {
-    max-width: 80vw;
-    height: auto;
-    min-height: 160px;
-  }
-
-  .book-back h3 { font-size: 1.1em; }
-  .book-back p { font-size: 0.9em; }
-}
-
-/* 返回首頁圖標 */
-.home-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.home-logo img {
-  width: 150px;
-  transition: transform 0.3s ease;
-}
-
-.home-logo img:hover {
-  transform: scale(1.1);
-}
-
-/* 漢堡選單按鈕 */
-.hamburger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1001;
-  color: #000;
-  display: block;
-}
-
-/* 導覽選單樣式 */
 .nav-menu {
   position: fixed;
   top: 0;
@@ -230,7 +183,7 @@ body {
   transform: translateX(0);
 }
 
-/* 子選單（初始隱藏） */
+/* 子選單 */
 .has-submenu .submenu {
   display: none;
   max-height: 0;
@@ -238,14 +191,10 @@ body {
   transition: max-height 0.4s ease;
   padding-left: 15px;
   list-style: none;
-  margin-top: 0;
-  padding-top: 0;
 }
 
-/* 子選單展開 */
 .has-submenu.active .submenu {
   max-height: 500px;
-  margin-top: 10px;
 }
 
 .has-submenu > a::after {
@@ -254,9 +203,54 @@ body {
   margin-left: 5px;
 }
 
-/* 響應式：小螢幕顯示漢堡 */
-@media (max-width: 768px) {
+/* ============================= 
+   手機版響應式 (max-width: 480px)
+============================= */
+@media (max-width: 480px) {
+
+  /* 背景圖手機版 */
+  body {
+    background-image: url('../image/comicbackgroundphone.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* 漢堡選單縮小 */
   .hamburger {
-    display: block;
+    font-size: 26px;
+  }
+
+  /* 回首頁圖標縮小 */
+  .home-logo img {
+    width: 120px;
+  }
+
+  /* 書本區單欄排列 */
+  .book-grid {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+    padding: 80px 5vw 50px;
+  }
+
+  /* 書本卡片自適應 */
+  .book {
+    max-width: 80vw;
+    height: auto;
+    min-height: 160px;
+  }
+
+  .book-back h3 {
+    font-size: 1.1em;
+  }
+
+  .book-back p {
+    font-size: 0.9em;
+    line-height: 1.4em;
+  }
+
+  /* 書本滑入動畫自適應 */
+  .book.show {
+    transform: translateY(0);
   }
 }
