@@ -301,3 +301,157 @@ body {
     display: block;
   }
 }
+
+/*loading動畫(按照人物出場順序依序滑入)*/
+#loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #111 20%, #000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 1.2s ease;
+  perspective: 1000px;
+}
+
+.polaroid-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.polaroid {
+  position: absolute;
+  width: 200px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform-origin: center;
+  filter: brightness(0.95) contrast(1.1);
+  transition: transform 0.4s ease;
+  animation: slightMove 6s ease-in-out infinite alternate;
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotateZ(var(--rz)) translateZ(20px);
+  z-index: 20;
+}
+
+.polaroid-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 800px;
+}
+
+/* 角度位置方向*/
+.p1 { --tx: -35vw; --ty: -20vh; --rz: -10deg; --from: top;    animation-delay: 0.1s; z-index: 4; }
+.p2 { --tx: -10vw; --ty: -30vh; --rz: 15deg;  --from: left;   animation-delay: 0.3s; z-index: 6; }
+.p3 { --tx: 15vw;  --ty: -15vh; --rz: -8deg;  --from: right;  animation-delay: 0.5s; z-index: 3; }
+.p4 { --tx: 35vw;  --ty: -10vh;   --rz: 12deg;  --from: bottom; animation-delay: 0.7s; z-index: 7; }
+.p5 { --tx: -30vw; --ty: 10vh;  --rz: 18deg;  --from: right;  animation-delay: 0.9s; z-index: 5; }
+.p6 { --tx: -10vw;  --ty: 20vh;  --rz: -14deg; --from: left;   animation-delay: 1.1s; z-index: 8; }
+.p7 { --tx: 10vw;  --ty: 25vh;  --rz: 6deg;   --from: bottom; animation-delay: 1.3s; z-index: 9; }
+.p8 { --tx: 30vw;  --ty: 15vh;  --rz: -16deg; --from: top;    animation-delay: 1.5s; z-index: 2; }
+
+/* 滑入定位 */
+.p1 { animation: fromTop 1.6s ease forwards; animation-delay: 0.1s; }
+.p2 { animation: fromLeft 1.6s ease forwards; animation-delay: 0.3s; }
+.p3 { animation: fromRight 1.6s ease forwards; animation-delay: 0.5s; }
+.p4 { animation: fromBottom 1.6s ease forwards; animation-delay: 0.7s; }
+.p5 { animation: fromRight 1.6s ease forwards; animation-delay: 0.9s; }
+.p6 { animation: fromLeft 1.6s ease forwards; animation-delay: 1.1s; }
+.p7 { animation: fromBottom 1.6s ease forwards; animation-delay: 1.3s; }
+.p8 { animation: fromTop 1.6s ease forwards; animation-delay: 1.5s; }
+
+/* 上下左右定位 */
+@keyframes fromTop {
+  0% { opacity: 0; transform: translateY(-150vh) rotateZ(var(--rz)) scale(0.9); }
+  100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
+}
+@keyframes fromBottom {
+  0% { opacity: 0; transform: translateY(150vh) rotateZ(var(--rz)) scale(0.9); }
+  100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
+}
+@keyframes fromLeft {
+  0% { opacity: 0; transform: translateX(-150vw) rotateZ(var(--rz)) scale(0.9); }
+  100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
+}
+@keyframes fromRight {
+  0% { opacity: 0; transform: translateX(150vw) rotateZ(var(--rz)) scale(0.9); }
+  100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
+}
+
+/* 特效 */
+.polaroid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { opacity: 0.05; }
+  to { opacity: 0.3; }
+}
+
+/* 大概會動的浮動? */
+@keyframes slightMove {
+  0%, 100% {
+    transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1);
+  }
+  50% {
+    transform: translate(calc(var(--tx) + 5px), calc(var(--ty) - 5px)) rotateZ(calc(var(--rz) + 2deg)) scale(1.02);
+  }
+}
+
+/* loading淡出 */
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*RWD手機版*/
+@media screen and (max-width: 480px) {
+  .polaroid-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .polaroid {
+    width: 120px;
+    padding: 6px;
+  }
+
+  /*手機版拍立得位置*/
+  .p1 { --tx: -25vw; --ty: -15vh; }
+  .p2 { --tx: -8vw;  --ty: -30vh; }
+  .p3 { --tx: 12vw;  --ty: -20vh; }
+  .p4 { --tx: 25vw;  --ty: -5vh; }
+  .p5 { --tx: -30vw; --ty: 8vh; }
+  .p6 { --tx: -20vw;  --ty: 25vh; }
+  .p7 { --tx: 15vw;   --ty: 20vh; }
+  .p8 { --tx: 20vw;  --ty: 10vh; }
+
+  .polaroid:hover {
+    transform: scale(1.03) rotateZ(var(--rz)) translateZ(10px);
+  }
+
+  @keyframes slightMove {
+    0%, 100% {
+      transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1);
+    }
+    50% {
+      transform: translate(calc(var(--tx) + 3px), calc(var(--ty) - 3px)) rotateZ(calc(var(--rz) + 1deg)) scale(1.01);
+    }
+  }
+}
