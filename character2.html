@@ -20,42 +20,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lexend:wght@100..900&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- 返回首頁圖標 -->
   <a href="index.html" class="home-logo">
     <img src="image/main-icon.png" alt="返回首頁" />
   </a>
 
-  
-  <!-- 背景與角色主圖 -->
-  <div class="character-info">
-    <div class="slide-in-left text-block">
-      <h1>佐藤真冬</h1>
-      <h2>所屬樂團:Given</h2>
-      <p>樂團定位:Gt.&Vo.</p>
-      <p>生日:2月28日</p>
-      <p>聲優:矢野獎吾</p>
-    </div>
-    <img src="imagecharacter/真冬人物圖.png" alt="真冬人物圖" class="slide-in-left character-img" />
-  </div>
-
-  <!-- 台詞區塊 -->
-  <div  class="slide-in-right quote">
-    <p>擁有讓人一聽便難以忘懷的歌聲。<br>放下前男友由紀的離世之痛後與立夏交往。</p>
-  </div>
-
-  <!-- 右側角色選單（縮為兩個） -->
-  <div class="character-menu">
-    <a href="character1.html">
-      <img src="imagecharacter/立夏小圖.jpg" alt="立夏">
-    </a>
-    <a href="character2.html">
-      <img src="imagecharacter/真冬小圖.jpg" alt="真冬">
-    </a>
-    <a href="character.html">
-      <img src="imagecharacter/毛玉.jpg" alt="毛玉小圖">
-    </a>
-  </div>
-
-  <!-- 漢堡選單 -->
+  <!-- 漢堡選單按鈕 -->
   <div class="hamburger" id="hamburger">&#9776;</div>
 
   <!-- 導覽列 -->
@@ -76,39 +46,48 @@
     </ul>
   </nav>
 
-  <!-- JavaScript -->
+<!-- 主內容區 -->
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <main class="container">
+    <!-- 左側：角色圖&change -->
+    <section class="left">
+      <div class="portrait-wrap">
+        <button class="change-btn" id="changeBtn" aria-label="切換角色圖片">⟳</button>
+        <img id="portrait" src="image/夏冬backgorund.jpg" alt="角色圖片" />
+      </div>
+    </section>
+
+    <!-- 中間：角色簡介（固定內容） -->
+    <section class="center">
+      <h1 id="charName">上山立夏</h1>
+      <div class="bio" id="charBio">
+        <p>
+          初中時因為姊姊的一句話讓他開始自學吉他。遇見春秋兩人後一起組成樂團the seasons。升高中後因緣際會下遇見真冬，將他拉入音樂的世界中。後來四人出道改用Given為團名，並且成為知名樂團。最後與真冬結婚，共度一生。
+        </p>
+        <ul>
+          <li>所屬樂團: Given、SYH代打</li>
+          <li>樂團定位:Gt.</li>
+          <li>生日: 8月1日</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 右側：兩個圓形按鈕（可放圖片） -->
+    <section class="right">
+      <div class="circle-actions">
+        <a href="character1.html" class="circle" id="gotoCp" aria-label="前往 CP">
+          <img src="imagecharacter/真冬小圖.png" alt="CP">
+        </a>
+        <a href="character.html" class="circle" id="backIndex" aria-label="回到登場人物目錄">
+          <img src="imagecharacter/毛玉.png" alt="目錄">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript：漢堡選單與動畫 -->
   <script src="js/hamburger.js"></script>
-
-  <script>
-    // 滑入動畫觸發
-    window.addEventListener('load', () => {
-      const leftElements = document.querySelectorAll('.slide-in-left');
-      const rightElements = document.querySelectorAll('.slide-in-right');
-
-      leftElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(-100px)';
-      });
-
-      rightElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(100px)';
-      });
-
-      setTimeout(() => {
-        leftElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-
-        rightElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-      }, 200); // 延遲動畫開始
-    });
-  </script>
+  <script src="js/character2.js"></script>
 </body>
 </html>
