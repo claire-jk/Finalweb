@@ -24,34 +24,6 @@
     <img src="image/main-icon.png" alt="返回首頁" />
   </a>
 
-  
-  <!-- 背景與角色主圖 -->
-  <div class="character-info">
-    <div class="slide-in-left text-block">
-      <h1>吉田由紀</h1>
-      <h2>所屬樂團:SYH</h2>
-      <p>樂團定位:Gt.&Vo.</p>
-      <p>生日:6月19日</p>
-      <p>聲優:新祐樹</p>
-    </div>
-    <img src="imagecharacter/由紀人物圖.png" alt="由紀人物圖" class="slide-in-left character-img" />
-  </div>
-
-  <!-- 台詞區塊 -->
-  <div  class="slide-in-right quote">
-    <p>玄純，真冬，柊的兒時玩伴。<br>真冬前男友，自殺身亡。音樂作詞作曲才華洋溢。</p>
-  </div>
-
-  <!-- 右側角色選單（縮為兩個） -->
-  <div class="character-menu">
-    <a href="character8.html">
-      <img src="imagecharacter/由紀小圖.jpeg" alt="由紀小圖">
-    </a>
-    <a href="character.html">
-      <img src="imagecharacter/毛玉.jpg" alt="毛玉小圖">
-    </a>
-  </div>
-
   <!-- 漢堡選單 -->
   <div class="hamburger" id="hamburger">&#9776;</div>
 
@@ -73,39 +45,43 @@
     </ul>
   </nav>
 
+  <!-- 主內容區 -->
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <main class="container">
+    <!-- 左側：角色圖&change -->
+    <section class="left">
+      <div class="portrait-wrap">
+        <img id="portrait" src="imagecharacter/由紀.png" alt="角色圖片" />
+      </div>
+    </section>
+
+    <!-- 中間：角色簡介（固定內容） -->
+    <section class="center">
+      <h1 id="charName">吉田由紀</h1>
+      <div class="bio" id="charBio">
+        <p>
+          與真冬柊玄純從小認識。很早就已經在跟真冬交往，兩人也是鄰居。後來與真冬爭吵後在家自盡，生前玩樂團的吉他被轉交到真冬手上，導致後續真冬遇見立夏並且進入樂團圈的故事。
+        </p>
+        <ul>
+          <li>所屬樂團:SYH</li>
+          <li>樂團定位:Gt.&Vo.</li>
+          <li>生日:6月19日</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 右側：兩個圓形按鈕（可放圖片） -->
+    <section class="right">
+      <div class="circle-actions">
+        <a href="character.html" class="circle" id="backIndex" aria-label="回到登場人物目錄">
+          <img src="imagecharacter/毛玉.png" alt="目錄">
+        </a>
+      </div>
+    </section>
+  </main>
+
   <!-- JavaScript -->
   <script src="js/hamburger.js"></script>
-  
-  <script>
-    // 滑入動畫觸發
-    window.addEventListener('load', () => {
-      const leftElements = document.querySelectorAll('.slide-in-left');
-      const rightElements = document.querySelectorAll('.slide-in-right');
-
-      leftElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(-100px)';
-      });
-
-      rightElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(100px)';
-      });
-
-      setTimeout(() => {
-        leftElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-
-        rightElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-      }, 200); // 延遲動畫開始
-    });
-  </script>
 </body>
 </html>

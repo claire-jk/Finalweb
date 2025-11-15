@@ -24,37 +24,6 @@
     <img src="image/main-icon.png" alt="返回首頁" />
   </a>
 
-  
-  <!-- 背景與角色主圖 -->
-  <div class="character-info">
-    <div class="slide-in-left text-block">
-      <h1>鹿島柊</h1>
-      <h2>所屬樂團:SYH</h2>
-      <p>樂團定位:Ba.&Vo.</p>
-      <p>生日:5月8日</p>
-      <p>聲優:今井文也</p>
-    </div>
-    <img src="imagecharacter/柊人物圖.png" alt="柊人物圖" class="slide-in-left character-img" />
-  </div>
-
-  <!-- 台詞區塊 -->
-  <div  class="slide-in-right quote">
-    <p>玄純，真冬，由紀的兒時玩伴。<br>立夏的天敵。與玄純為情侶。</p>
-  </div>
-
-  <!-- 右側角色選單（縮為兩個） -->
-  <div class="character-menu">
-    <a href="character5.html">
-      <img src="imagecharacter/玄純小圖.jpg" alt="玄純小圖">
-    </a>
-    <a href="character6.html">
-      <img src="imagecharacter/柊小圖.jpg" alt="柊小圖">
-    </a>
-    <a href="character.html">
-      <img src="imagecharacter/毛玉.jpg" alt="毛玉小圖">
-    </a>
-  </div>
-
   <!-- 漢堡選單 -->
   <div class="hamburger" id="hamburger">&#9776;</div>
 
@@ -76,39 +45,48 @@
     </ul>
   </nav>
 
+  <!-- 主內容區 -->
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <main class="container">
+    <!-- 左側：角色圖&change -->
+    <section class="left">
+      <div class="portrait-wrap">
+        <button class="change-btn" id="changeBtn" aria-label="切換角色圖片">⟳</button>
+        <img id="portrait" src="" alt="角色圖片" />
+      </div>
+    </section>
+
+    <!-- 中間：角色簡介（固定內容） -->
+    <section class="center">
+      <h1 id="charName">鹿島柊</h1>
+      <div class="bio" id="charBio">
+        <p>
+          跟玄純是青梅竹馬，與由紀真冬從小認識。創作歌曲的天分高，也因此立夏才會答應代打，然而柊自己卻認為比不上由紀的才華。經歷了一些事後發覺自己對玄純的感情，自動送上門後被飽餐一頓，玄柊兩人正式交往。
+        </p>
+        <ul>
+          <li>所屬樂團:SYH</li>
+          <li>樂團定位:Ba.&Vo.</li>
+          <li>生日:5月8日</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 右側：兩個圓形按鈕（可放圖片） -->
+    <section class="right">
+      <div class="circle-actions">
+        <a href="character5.html" class="circle" id="gotoCp" aria-label="前往 CP">
+          <img src="imagecharacter/玄純小圖.png" alt="CP">
+        </a>
+        <a href="character.html" class="circle" id="backIndex" aria-label="回到登場人物目錄">
+          <img src="imagecharacter/毛玉.png" alt="目錄">
+        </a>
+      </div>
+    </section>
+  </main>
+
   <!-- JavaScript -->
   <script src="js/hamburger.js"></script>
-  
-  <script>
-    // 滑入動畫觸發
-    window.addEventListener('load', () => {
-      const leftElements = document.querySelectorAll('.slide-in-left');
-      const rightElements = document.querySelectorAll('.slide-in-right');
-
-      leftElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(-100px)';
-      });
-
-      rightElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(100px)';
-      });
-
-      setTimeout(() => {
-        leftElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-
-        rightElements.forEach(el => {
-          el.style.transition = 'all 1s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0)';
-        });
-      }, 200); // 延遲動畫開始
-    });
-  </script>
+  <script src="js/character6.js"></script>
 </body>
 </html>
