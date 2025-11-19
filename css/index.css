@@ -3,16 +3,20 @@
   --light-color: #8ec6e8;
 }
 
-/* 全域設定 */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/*Setting*/
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   height: 100%;
   font-family: 'Zen Kurenaido', sans-serif;
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
   overflow-x: hidden;
 }
 
-/* 區塊設定 */
 .page {
   height: 100vh;
   width: 100%;
@@ -22,7 +26,7 @@ html, body {
   position: relative;
 }
 
-/* ================= 第一頁 ================= */
+/*First page*/
 .section1 {
   background: url('../image/first page.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -30,8 +34,10 @@ html, body {
 
 #leaf {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index:100;
   pointer-events: none;
 }
@@ -49,10 +55,17 @@ html, body {
   color: black;
   transition: opacity 0.5s ease;
 }
-.intro.fade-out { opacity: 0; }
+.intro.fade-out { 
+  opacity: 0; 
+}
+.intro p { 
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards; 
 
-.intro p { opacity: 0; animation: fadeIn 1.5s ease-in-out forwards; }
-.intro p:nth-child(2) { animation-delay: 0.5s; }
+}
+.intro p:nth-child(2) { 
+  animation-delay: 0.5s; 
+}
 
 .container {
   text-align: center;
@@ -62,6 +75,7 @@ html, body {
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.2s;
 }
+
 .header-title {
   font-size: 3rem;
   font-weight: bold;
@@ -74,7 +88,7 @@ html, body {
   text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 }
 
-/* ================= 第二頁 ================= */
+/*Second page*/
 .section2 {
   background: url('../image/given-story.png') no-repeat center center fixed;
   background-size: cover;
@@ -83,7 +97,7 @@ html, body {
 .section2 .container {
   max-width: 940px;
   width: 90%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.829);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -102,15 +116,16 @@ html, body {
 .section2 .main-area p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #333;
+  color: #3b3b3b;
 }
 
-/* ================= 第三頁 ================= */
+/*Thrid page*/
 .section3 {
   background: url('../image/mainpage3tablet.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
+/*包含圈圈的框*/
 .section3 .container {
   max-width: 940px;
   width: 100%;
@@ -120,6 +135,7 @@ html, body {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
+/*框內五個圈*/
 .circle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -127,14 +143,114 @@ html, body {
   justify-items: center;
   align-items: center;
 }
+.circle-item{
+  text-align: center;
+}
+.circle-item p {
+  margin-top: 10px;
+  color: #000; font-size: 1.1em; 
+}
+.circle { 
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: 0.3s; 
+}
+.circle img {
+  width: 100%;
+  height:  100%;
+  object-fit: cover; 
+}
+.circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4); 
+}
 
-.circle-item { text-align: center; }
-.circle { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; transition: 0.3s; }
-.circle img { width: 100%; height: 100%; object-fit: cover; }
-.circle:hover { transform: scale(1.1); box-shadow: 0 0 10px rgba(0,0,0,0.4); }
-.circle-item p { margin-top: 10px; color: #000; font-size: 1.1em; }
+/*滑入動畫*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* 回首頁 icon */
+@keyframes fadeIn { 
+  to { opacity: 1; } 
+}
+
+/*RWD for iPad*/
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+  .header-title {
+    font-size: 2rem;
+  }
+  .main-area p {
+    font-size: 1.05rem;
+  }
+  .home-logo img {
+    width: 120px;
+  }
+  .section2 .container {
+    width: 95%;
+    padding: 20px;
+  }
+  .section2 .header-title {
+    font-size: 2rem;
+  }
+  .section2 .main-area p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/*RWD for phone*/
+@media (max-width: 480px) {
+  .intro {
+    font-size: 1.2rem;
+  }
+  .header-title {
+    font-size: 1.7rem;
+  }
+  .main-area p {
+    font-size: 1rem;
+  }
+  .scroll-up, .scroll-down {
+    font-size: 1.5rem;
+  }
+  .section2 .container {
+    width: 90%;
+    padding: 15px;
+  }
+  .section2 .header-title {
+    font-size: 1.5rem;
+  }
+  .section2 .main-area p {
+    font-size: 0.9rem;
+    line-height: 1.4; 
+  }
+  .section2 { 
+    background-attachment: scroll; 
+  }
+  .circle{
+    width: 80px;
+    height: 80px; 
+  }
+  /*change background when use in phone*/
+  html, body {
+  .section1 { background: url('../image/page1.jpg') no-repeat center center fixed; background-size: cover; }
+  .section2 { background: url('../image/page2.jpg') no-repeat center center fixed; background-size: cover; }
+  .section3 { background: url('../image/page3.jpg') no-repeat center center fixed; background-size: cover; }
+  }
+}
+
+/*回首頁icon*/
 .home-logo {
   position: fixed;
   top: 20px;
@@ -150,77 +266,6 @@ html, body {
 .home-logo img:hover {
   transform: scale(1.1);
 }
-
-/* 動畫效果 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-  }
-
-  .header-title {
-    font-size: 2rem;
-  }
-
-  .main-area p {
-    font-size: 1.05rem;
-  }
-
-  .home-logo img {
-    width: 120px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-title {
-    font-size: 1.7rem;
-  }
-
-  .main-area p {
-    font-size: 1rem;
-  }
-
-  .scroll-up, .scroll-down {
-    font-size: 1.5rem;
-  }
-
-  /* ✅ 新增：小螢幕時背景圖片替換 */
-  html, body {
-    background: url('../image/page2.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
-}
-
-@media (max-width: 768px) {
-  .section2 .container {
-    width: 95%;
-    padding: 20px;
-  }
-  .section2 .header-title { font-size: 2rem; }
-  .section2 .main-area p { font-size: 1rem; line-height: 1.5; }
-}
-
-@media (max-width: 480px) {
-  .section2 .container {
-    width: 90%;
-    padding: 15px;
-  }
-  .section2 .header-title { font-size: 1.5rem; }
-  .section2 .main-area p { font-size: 0.9rem; line-height: 1.4; }
-  .section2 { background-attachment: scroll; }
-}
-
 
 /* 漢堡選單按鈕 */
 .hamburger {
@@ -269,7 +314,7 @@ html, body {
 
 /* 子選單（初始隱藏） */
 .has-submenu .submenu {
-  display: none; /* 始終渲染在 DOM 中 */
+  display: none;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
@@ -281,7 +326,7 @@ html, body {
 
 /* 子選單展開 */
 .has-submenu.active .submenu {
-  max-height: 500px; /* 動畫展開用，設為足夠容納內容的高度 */
+  max-height: 500px;
   margin-top: 10px;
   padding-top: -100px;
 }
@@ -292,27 +337,8 @@ html, body {
   margin-left: 5px;
 }
 
-/* 響應式：小螢幕顯示漢堡 */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
-}
-/* 動畫 */
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-
-/* 響應式 */
-@media (max-width: 768px) {
-  .intro { font-size: 1.5rem; padding: 1rem; }
-  .header-title { font-size: 2rem; }
-  .circle { width: 100px; height: 100px; }
-  .home-logo img { width: 120px; }
-}
-@media (max-width: 480px) {
-  .intro { font-size: 1.2rem; }
-  .circle { width: 80px; height: 80px; }
-  .section1 { background: url('../image/page1.jpg') no-repeat center center fixed; background-size: cover; }
-  .section2 { background: url('../image/page2.jpg') no-repeat center center fixed; background-size: cover; }
-  .section3 { background: url('../image/page3.jpg') no-repeat center center fixed; background-size: cover; }
 }
