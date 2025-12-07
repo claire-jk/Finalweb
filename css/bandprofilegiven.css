@@ -10,11 +10,11 @@ html, body {
   color: #000000;
   margin: 0;
   animation: fadeSlideIn 1s ease-out;
-  position: relative; /* 為偽元素定位用 */
+  position: relative;
   overflow-x: hidden;
 }
 
-/* 背景圖模糊效果 */
+/*模糊背景*/
 body::before {
   content: "";
   position: fixed;
@@ -25,8 +25,8 @@ body::before {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: blur(5px); /* 模糊程度，可調整 */
-  z-index: -1; /* 放在文字和內容後面 */
+  filter: blur(5px);
+  z-index: -1;
 }
 
 
@@ -39,24 +39,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 返回首頁圖標 */
-.home-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.home-logo img {
-  width: 120px;
-  transition: transform 0.3s ease;
-}
-
-.home-logo img:hover {
-  transform: scale(1.1);
-}
-
-/* 外部容器：左右或上下排版 */
 .wrapper {
   display: flex;
   justify-content: center;
@@ -83,13 +65,6 @@ a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 滑鼠移上去的效果 */
-/*.image-section img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
-}
-*/
-
 /* 文字區塊 */
 .info-section {
   flex: 1 1 400px;
@@ -105,8 +80,8 @@ a:hover {
   margin-bottom: 15px;
 }
 
-/* 響應式調整：手機垂直排列 */
-@media (max-width: 768px) {
+/* RWD:mobile */
+@media (max-width: 480px) {
   .wrapper {
     flex-direction: column;
     gap: 20px;
@@ -121,7 +96,7 @@ a:hover {
     height: auto;
   }
 }
-/*淡入＋上滑*/
+
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
@@ -131,6 +106,131 @@ a:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 右側藍色圓圈按鈕 */
+.circle-btn {
+  position: fixed;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  background-color: rgba(119, 182, 255, 0.418);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgb(0, 0, 0);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.circle-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.circle-btn:hover {
+  transform: translateY(-50%) scale(1.15);
+  background-color: #789cff;
+}
+
+.circle-btn:hover img {
+  transform: scale(1.2);
+}
+
+/* RWD */
+@media (max-width: 480px) {
+  .circle-btn {
+    right: 50%;
+    top: auto;
+    bottom: 30px;
+    transform: translateX(50%);
+  }
+
+  .circle-btn:hover {
+    transform: translateX(50%) scale(1.15);
+  }
+
+  .info-section {
+    transform: none;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-section {
+    width: 90%;
+    padding: 30px;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+
+  .dog-sprite {
+    width: 80px;
+    height: 80px;
+    background-size: 320px 80px;
+  }
+
+  .dog-stage {
+    height: 100px;
+  }
+}
+
+/* 小狗舞台 */
+.dog-stage {
+  position: fixed;
+  left: 0; right: 0; bottom: 12px;
+  height: 140px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 小狗動畫 */
+.dog-sprite {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 128px; height: 128px;
+  background-image: url("../image/dog--7.png");
+  background-size: 512px 128px;
+  animation: walkAnim 0.6s steps(4) infinite;
+  transform-origin: center;
+  will-change: transform;
+  filter: drop-shadow(0 6px 6px rgba(0,0,0,0.35));
+  transition: transform 0.05s linear;
+}
+
+/* 走路幀動畫 */
+@keyframes walkAnim {
+  from { background-position: 0 0; }
+  to { background-position: -512px 0; }
+}
+
+/* 返回首頁圖標 */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
 }
 
 /* 漢堡選單按鈕 */
@@ -208,119 +308,4 @@ a:hover {
   .hamburger {
     display: block;
   }
-}
-
-/* 右側藍色圓圈按鈕（含圖片） */
-.circle-btn {
-  position: fixed;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 80px;
-  height: 80px;
-  background-color: rgba(119, 182, 255, 0.418);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 12px rgb(0, 0, 0);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  z-index: 1000;
-}
-
-.circle-btn img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  /*filter: brightness(0) invert(1);*/
-  transition: transform 0.3s ease;
-}
-
-.circle-btn:hover {
-  transform: translateY(-50%) scale(1.15);
-  background-color: #789cff;
-}
-
-.circle-btn:hover img {
-  transform: scale(1.2);
-}
-
-/* 手機版圓圈移到底部中間 */
-@media (max-width: 480px) {
-  .circle-btn {
-    right: 50%;
-    top: auto;
-    bottom: 30px;
-    transform: translateX(50%);
-  }
-
-  .circle-btn:hover {
-    transform: translateX(50%) scale(1.15);
-  }
-
-  .info-section {
-    transform: none; /* 手機不要往左移 */
-  }
-
-  .wrapper {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .info-section {
-    width: 90%;
-    padding: 30px; /* 內邊距縮小 */
-    font-size: 0.95em; /* 字體縮小 */
-    line-height: 1.5; /* 行距稍微緊湊 */
-  }
-
-  .image-section img {
-    width: 100%;
-    height: auto;
-  }
-
-  .dog-sprite {
-    width: 80px;      /* 原本 128px → 80px */
-    height: 80px;     /* 原本 128px → 80px */
-    background-size: 320px 80px; /* 四幀動畫等比例縮小 */
-  }
-
-  .dog-stage {
-    height: 100px; /* 舞台高度相應縮小 */
-  }
-}
-
-/* 小狗舞台 */
-.dog-stage {
-  position: fixed;
-  left: 0; right: 0; bottom: 12px;
-  height: 140px;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* 小狗動畫 */
-.dog-sprite {
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 128px; height: 128px;
-  background-image: url("../image/dog--7.png");
-  background-size: 512px 128px; /* 四幀 */
-  animation: walkAnim 0.6s steps(4) infinite;
-  transform-origin: center;
-  will-change: transform;
-  filter: drop-shadow(0 6px 6px rgba(0,0,0,0.35));
-  transition: transform 0.05s linear;
-}
-
-/* 走路幀動畫 */
-@keyframes walkAnim {
-  from { background-position: 0 0; }
-  to { background-position: -512px 0; }
-}
-
-/* 跳躍特效：放大+陰影加深 */
-.dog-sprite.jump {
-  filter: drop-shadow(0 12px 12px rgba(0,0,0,0.5));
-  transform: scale(1.1); /* 會被 JS 的 translateX/Y 覆蓋，所以只是加特效 */
 }

@@ -7,23 +7,6 @@ body {
   font-family: 'Cormorant Garamond', 'Zen Kurenaido', 'Arial', sans-serif;
 }
 
-/* 返回首頁圖標 */
-.home-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.home-logo img {
-  width: 150px;
-  transition: transform 0.3s ease;
-}
-
-.home-logo img:hover {
-  transform: scale(1.1);
-}
-
 .wrapper {
   display: flex;
   width: 100%;
@@ -31,7 +14,6 @@ body {
   overflow: hidden;
 }
 
-/* 區塊通用設定 */
 .section {
   padding: 80px 20px;
   max-width: 1000px;
@@ -46,7 +28,7 @@ body {
   transform: translateY(0);
 }
 
-/* 第一頁：作者介紹 */
+/* 作者介紹 */
 .author-card {
   display: flex;
   align-items: center;
@@ -74,14 +56,12 @@ body {
   object-fit: cover;
 }
 
-/* 滑鼠移上去：放大＋陰影 */
 .circle-icon:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 
-/* 點擊時：縮小一點，營造按壓感 */
 .circle-icon:active {
   transform: scale(0.95);
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
@@ -101,7 +81,7 @@ body {
   font-size: 1em;
 }
 
-/* 第二頁：相關作品 */
+/* 相關作品 */
 .works-title {
   text-align: center;
   font-size: 2em;
@@ -137,14 +117,12 @@ body {
   object-fit: cover;
 }
 
-/* 滑鼠移上去：放大＋陰影 */
 .work-circle:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 
-/* 點擊時：縮小 */
 .work-circle:active {
   transform: scale(0.95);
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
@@ -167,7 +145,7 @@ body {
   transition: 0.3s;
 }
 
-/* 響應式調整：手機版上下排列 */
+/* RWD:mobile */
 @media (max-width: 480px) {
   .wrapper {
     flex-direction: column;
@@ -229,90 +207,13 @@ body {
     }
   }
 
-  /* ✅ 新增：小螢幕時背景圖片替換 */
   body {
     background: url('../image/authorphone.jpg') no-repeat center center fixed;
     background-size: cover;
   }
 }
 
-/* 漢堡選單按鈕 */
-.hamburger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1001;
-  color: #000;
-  display: block;
-}
-
-/* 導覽選單樣式 */
-.nav-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  width: 200px;
-  height: 100%;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-.nav-menu ul {
-  list-style: none;
-  padding: 60px 20px;
-}
-
-.nav-menu ul li {
-  margin: 20px 0;
-}
-
-.nav-menu ul li a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #333;
-}
-
-.nav-menu.show {
-  transform: translateX(0);
-}
-
-/* 子選單（初始隱藏） */
-.has-submenu .submenu {
-  display: none;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  padding-left: 15px;
-  list-style: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* 子選單展開 */
-.has-submenu.active .submenu {
-  max-height: 500px;
-  margin-top: 10px;
-}
-
-.has-submenu > a::after {
-  content: ' ▼';
-  font-size: 0.8em;
-  margin-left: 5px;
-}
-
-/* 響應式：小螢幕顯示漢堡 */
-@media (max-width: 480px) {
-  .hamburger {
-    display: block;
-  }
-}
-
-/*loading動畫(按照人物出場順序依序滑入)*/
+/*loading動畫*/
 #loader {
   position: fixed;
   inset: 0;
@@ -463,5 +364,98 @@ body {
     50% {
       transform: translate(calc(var(--tx) + 3px), calc(var(--ty) - 3px)) rotateZ(calc(var(--rz) + 1deg)) scale(1.01);
     }
+  }
+}
+
+/* 返回首頁圖標 */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* 漢堡選單按鈕 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+/* 導覽選單樣式 */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單（初始隱藏） */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 子選單展開 */
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
   }
 }
