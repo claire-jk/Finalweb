@@ -1,4 +1,4 @@
-// 當頁面完全載入後，播放拍立得掉落動畫，然後淡出
+//淡出效果
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   // 3.5 秒後淡出

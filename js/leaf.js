@@ -1,9 +1,10 @@
-// === 基本設定 ===
-const SAKURA_COUNT = 100; // 葉子數量
-const IMAGE_URL = "./image/leaf.png"; // 葉子圖片路徑
+//飄落銀杏動畫
+//basic setting for leaves animation
+const SAKURA_COUNT = 100;
+const IMAGE_URL = "./image/leaf.png";
 const IMG_SIZE = 24;
 
-// ✅ 先建立圖片物件
+//先建立圖片物件
 const img = new Image();
 img.src = IMAGE_URL;
 
@@ -12,11 +13,9 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// === 全域變數 ===
 let leaves = [];
 let windRoots = [];
 
-// === 初始化 ===
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -26,7 +25,7 @@ canvas.addEventListener("mousemove", (e) => {
   windRoots.push({ x: e.clientX, y: e.clientY, life: 60 });
 });
 
-// === 建立葉子資料 ===
+//建立葉子資料
 function addLeaves() {
   for (let i = 0; i < SAKURA_COUNT; i++) {
     leaves.push({
@@ -48,12 +47,12 @@ function addLeaves() {
   }
 }
 
-// === 計算距離 ===
+//計算距離
 function getDistance(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-// === 找最近的風源 ===
+//找最近的風源
 function getNearestWind(leaf) {
   let nearest = null;
   let minDist = 150;
@@ -67,13 +66,13 @@ function getNearestWind(leaf) {
   return nearest;
 }
 
-// === 葉子下落邏輯 ===
+//葉子下落邏輯
 function fall(leaf) {
   leaf.rotationX += leaf.rotationVx * 0.1;
   leaf.rotationY += leaf.rotationVy * 0.1;
   leaf.rotationZ += leaf.rotationVz * 0.1;
 
-  // 🔹 調整速度倍率（例如加快 2 倍）
+  //調整速度倍率
   const SPEED_MULTIPLIER = 2.0;
 
   let vx = leaf.vx + Math.sin(leaf.rotationZ * Math.PI / 180) * 0.5;
@@ -99,7 +98,7 @@ function fall(leaf) {
   leaf.scaleX = leaf.scaleY = scale;
 }
 
-// === 繪製葉子 ===
+//繪製葉子
 function drawLeaves() {
   for (let s of leaves) {
     const dispX = (s.x - 250) / Math.max(s.z / 200, 0.001) * 2 + canvas.width / 2;
@@ -117,11 +116,10 @@ function drawLeaves() {
   }
 }
 
-// === 主繪圖迴圈 ===
+//主繪圖迴圈
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // 更新滑鼠風向的壽命
   windRoots = windRoots.filter((w) => --w.life > 0);
 
   for (let leaf of leaves) fall(leaf);
@@ -130,7 +128,7 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-// === 啟動動畫 ===
+//啟動動畫
 img.onload = function () {
   addLeaves();
   draw();

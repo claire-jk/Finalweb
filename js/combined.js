@@ -1,4 +1,4 @@
-// ✅ Intro 淡出動畫
+//Intro淡出動畫
 window.addEventListener('load', () => {
   setTimeout(() => {
     const intro = document.getElementById('intro');
@@ -11,14 +11,14 @@ window.addEventListener('load', () => {
   }, 6000);
 });
 
-// ✅ 漢堡選單
+//漢堡選單
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('show');
 });
 
-// ✅ 子選單切換
+//子選單切換
 document.querySelectorAll('.submenu-toggle').forEach(toggle => {
   toggle.addEventListener('click', function (e) {
     e.preventDefault();
@@ -37,7 +37,7 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
   });
 });
 
-// ✅ 滾輪頁面切換（平滑滾動到下一區）
+//滾輪頁面切換（平滑滾動到下一區）
 let isScrolling = false;
 window.addEventListener('wheel', e => {
   if (isScrolling) return;

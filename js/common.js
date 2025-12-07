@@ -1,5 +1,4 @@
 //只撥放一次loading動畫
-
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("a[href]").forEach(link => {
     const href = link.getAttribute("href");
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//判斷要不要跳過loading動畫
+//是否跳過loading動畫
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const skip = sessionStorage.getItem("skipNextLoader") === "true";
