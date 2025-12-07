@@ -1,6 +1,3 @@
-/* ============================= 
-   全局樣式與背景
-============================= */
 body {
   margin: 0;
   padding: 0;
@@ -15,9 +12,6 @@ body {
   transition: background 0.3s ease;
 }
 
-/* ============================= 
-   漫畫書本區 3x3
-============================= */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,7 +28,7 @@ body {
   max-width: clamp(100px, 30vw, 250px);
   height: clamp(160px, 43vw, 360px);
   perspective: 1000px;
-  opacity: 0; /* 初始隱藏，用於滑入動畫 */
+  opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   cursor: pointer;
@@ -46,7 +40,7 @@ body {
   transform: translateY(0);
 }
 
-/* 書本內層翻轉 */
+/* filp */
 .book-inner {
   position: relative;
   width: 100%;
@@ -55,7 +49,6 @@ body {
   transform-style: preserve-3d;
 }
 
-/* 書本翻轉 */
 .book-inner.is-flipped {
   transform: rotateY(180deg);
 }
@@ -110,11 +103,8 @@ body {
   color: #ddd;
 }
 
-/* ============================= 
-   手機版響應式 (max-width: 480px)
-============================= */
+/*RWD:mobile*/
 @media (max-width: 300px) {
-  /* 背景圖手機版 */
   body {
     background-image: url('../image/comicbackgroundtablet.jpg');
     background-attachment: scroll;
@@ -122,24 +112,20 @@ body {
     background-position: center;
   }
 
-  /* 漢堡選單縮小 */
   .hamburger {
     font-size: 26px;
   }
 
-  /* 回首頁圖標縮小 */
   .home-logo img {
     width: 120px;
   }
 
-  /* 書本區單欄排列 */
   .book-grid {
     grid-template-columns: 1fr;
     row-gap: 25px;
     padding: 80px 5vw 50px;
   }
 
-  /* 書本卡片自適應 */
   .book {
     max-width: 85vw;
     min-width: 140px;
@@ -147,7 +133,7 @@ body {
     min-height: 200px;
     opacity: 0;
     transform: translateY(30px);
-    font-size: 0.9em; /* 整體略縮小字體 */
+    font-size: 0.9em;
   }
 
   .book.show {
@@ -159,26 +145,24 @@ body {
     height: 100%;
   }
 
-  /* 書本背面樣式微調 */
   .book-back {
-    padding: 15px 12px;      /* 內距略縮小 */
+    padding: 15px 12px;
     border-radius: 10px;
   }
 
   .book-back h3 {
-    font-size: 0.85em;       /* 標題變小 */
+    font-size: 0.85em;
     margin-bottom: 6px;
-    letter-spacing: 0.5px;   /* 增加一點間距讓字更清楚 */
+    letter-spacing: 0.5px;
   }
 
   .book-back p {
-    font-size: 0.75em;       /* 內容文字變小 */
-    line-height: 1.35em;     /* 行距稍微縮短但保留可讀性 */
-    margin: 0;               /* 去掉預設段落間距 */
-    color: #ccc;             /* 字體顏色略亮，對比更明顯 */
+    font-size: 0.75em;
+    line-height: 1.35em;
+    margin: 0;
+    color: #ccc;
   }
 
-  /* 書本封面圖片自適應 */
   .book-front img {
     height: 100%;
     object-fit: cover;

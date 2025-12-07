@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Given 被贈與的未來</title>
 
-  <!-- favicon 與 manifest 設定 -->
-  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Given" />
-  <link rel="manifest" href="site.webmanifest" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Given">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- 字體與樣式 -->
-  <link rel="stylesheet" href="css/comic.css" />
+  <link rel="stylesheet" href="css/comic.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Great+Vibes&family=Lexend&family=Zen+Kurenaido&display=swap" rel="stylesheet">
@@ -113,29 +113,8 @@
     </div>
   </main>
 
-  <!-- JavaScript -->
+  <!-- JS -->
   <script src="js/hamburger.js"></script>
-  <script>
-    // 書本翻轉控制
-    document.querySelectorAll('.book').forEach(book => {
-      book.addEventListener('click', () => {
-        const clickedInner = book.querySelector('.book-inner');
-        document.querySelectorAll('.book-inner').forEach(inner => {
-          if (inner !== clickedInner) inner.classList.remove('is-flipped');
-        });
-        clickedInner.classList.toggle('is-flipped');
-      });
-    });
-
-    // 書本滑入動畫
-    window.addEventListener('load', () => {
-      const books = document.querySelectorAll('.book');
-      books.forEach((book, index) => {
-        setTimeout(() => {
-          book.classList.add('show');
-        }, index * 150); // 依序出現
-      });
-    });
-  </script>
+  <script src="js/comic.js"></script>
 </body>
 </html>

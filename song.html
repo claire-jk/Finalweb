@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Given 被贈與的未來</title>
 
-  <!-- favicon 與 manifest 設定 -->
-  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Given" />
-  <link rel="manifest" href="site.webmanifest" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Given">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- 字體與樣式 -->
-  <link rel="stylesheet" href="css/song.css" />
+  <link rel="stylesheet" href="css/song.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Great+Vibes&family=Lexend&family=Zen+Kurenaido&display=swap" rel="stylesheet">
@@ -64,14 +64,14 @@
   <div class="music-player" id="music-player">
     <h1>Song</h1>
 
-    <!-- ===== 唱片 + 影片 同排顯示區 ===== -->
+    <!--內容顯示區-->
     <div class="media-section">
-      <!-- 唱片顯示區 -->
+      <!--唱片顯示區-->
       <div class="record-container">
         <img src="image/disk.png" alt="唱片" class="record" id="record" />
       </div>
 
-      <!-- 🎬 YouTube 影片播放框 -->
+      <!--影片播放框-->
       <div class="video-container">
         <iframe id="youtube-frame"
           src=""
@@ -83,54 +83,55 @@
       </div>
     </div>
 
-    <!-- ===== 圓形圖片歌曲列表 ===== -->
+    <!--song list-->
     <div class="song-list-circle">
       <div class="song-circle" data-video="https://www.youtube.com/embed/ZJNP1MYv8Ok?si=58gfSAk64RqS_FdR" data-bg-desktop="image/song0tablet.jpg" data-bg-mobile="image/song0phone.jpg">
-        <img src="image/song0.jpg" alt="キヅアト" />
+        <img src="image/song0.jpg" alt="キヅアト">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/hhhDFl0_Avg?si=wxAyqEvs-BlnELd9" data-bg-desktop="image/song1tablet.jpg" data-bg-mobile="image/song1phone.jpg">
-        <img src="image/song1.jpg" alt="まるつけ" />
+        <img src="image/song1.jpg" alt="まるつけ">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/nK9WuY-v7o0?si=PiCCn6OTBmwxbehm" data-bg-desktop="image/song2tablet.jpg" data-bg-mobile="image/song2phone.jpg">
-        <img src="image/song2.jpg" alt="冬のはなし" />
+        <img src="image/song2.jpg" alt="冬のはなし">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/tf8nBIN6zuQ?si=NAdZc2Ce5v2RgEpc" data-bg-desktop="image/song3tablet.jpg" data-bg-mobile="image/song3phone.jpg">
-        <img src="image/song3.jpg" alt="うらがわの存在" />
+        <img src="image/song3.jpg" alt="うらがわの存在">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/N-sDi33SyrI?si=jEwyqPsVrLzm1cO-" data-bg-desktop="image/song4tablet.jpg" data-bg-mobile="image/song4phone.jpg">
-        <img src="image/song4.jpg" alt="夜が明ける" />
+        <img src="image/song4.jpg" alt="夜が明ける">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/7-qQ8kJLWO0?si=ZFwWbvGaN8DM2GRC" data-bg-desktop="image/song5tablet.jpg" data-bg-mobile="image/song5phone.jpg">
-        <img src="image/song5.jpg" alt="僕らだけの主題歌" />
+        <img src="image/song5.jpg" alt="僕らだけの主題歌">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/PeNGASaGlZU?si=ukEwSCK2HR89sSMw" data-bg-desktop="image/song6tablet.jpg" data-bg-mobile="image/song6phone.jpg">
-        <img src="image/song6.jpg" alt="パレイド" />
+        <img src="image/song6.jpg" alt="パレイド">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/69mf3IOvQik?si=5ofEiyReV_OYg8vE" data-bg-desktop="image/song7tablet.jpg" data-bg-mobile="image/song7phone.jpg">
-        <img src="image/song7.jpg" alt="ストレイト" />
+        <img src="image/song7.jpg" alt="ストレイト">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/tlfTzsMeoR4?si=oiabqRhIH4-jxjnZ" data-bg-desktop="image/song8tablet.webp" data-bg-mobile="image/song8phone.jpg">
-        <img src="image/song8.jpg" alt="スーパーウルトラ I LOVE YOU" />
+        <img src="image/song8.jpg" alt="スーパーウルトラ I LOVE YOU">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/AhRjN_4ApuU?autoplay=1" data-bg-desktop="image/song9tablet.jpg" data-bg-mobile="image/song9phone.jpg">
-        <img src="image/song9.jpg" alt="海へ" />
+        <img src="image/song9.jpg" alt="海へ">
       </div>
 
       <div class="song-circle" data-video="https://www.youtube.com/embed/zWEi0D0ahY8?si=n1Wzs6hMPcMOQ3cI" data-bg-desktop="image/song10tablet.jpg" data-bg-mobile="image/song10phone.jpg">
-        <img src="image/song10.jpg" alt="結言" />
+        <img src="image/song10.jpg" alt="結言">
       </div>
     </div>
   </div>
-
+  
+  <!--JS-->
   <script src="js/song.js"></script>
   <script src="js/hamburger.js"></script>
   <script src="js/common.js"></script>

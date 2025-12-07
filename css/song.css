@@ -1,22 +1,19 @@
-/* ========== 基本設定 ========== */
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', 'Zen Kurenaido', 'Arial', sans-serif;
   color: yellow;
   transition: background 0.5s ease-in-out;
   background-color: #000;
-
-  /* 允許頁面垂直滾動 */
   height: auto;
   min-height: 100vh;
-  overflow-x: hidden;  /* 防止水平滾動 */
-  overflow-y: auto;    /* 允許垂直滾動 */
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
-/* ===== 外框與整體區塊 ===== */
+/*整體區塊*/
 .music-player {
-  position: relative; /* 為背景模糊層定位 */
+  position: relative;
   padding-top: 40px;
   min-height: 100vh;
   transition: background-image 0.5s ease-in-out;
@@ -24,7 +21,7 @@ body {
   background-position: center;
 }
 
-/* ===== 背景模糊層 ===== */
+/*模糊背景*/
 .music-player::before {
   content: '';
   position: absolute;
@@ -37,7 +34,6 @@ body {
   z-index: 0;
 }
 
-/* 所有內容在模糊層上方 */
 .music-player * {
   position: relative;
   z-index: 1;
@@ -53,7 +49,7 @@ body {
   text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
-/* ===== 唱片 + 影片區 ===== */
+/*唱片&影片區*/
 .media-section {
   display: flex;
   justify-content: center;
@@ -97,7 +93,7 @@ body {
   border: none;
 }
 
-/* ===== 圓形歌曲列表 ===== */
+/* song list */
 .song-list-circle {
   display: flex;
   justify-content: center;
@@ -145,7 +141,7 @@ body {
   animation-play-state: running;
 }
 
-/* ===== 手機響應式 (768px 以下) ===== */
+/*RWD:ipad*/
 @media (max-width: 768px) {
   .media-section {
     flex-direction: column;
@@ -163,7 +159,7 @@ body {
   }
 }
 
-/* ===== 小螢幕手機版 (468px 以下) ===== */
+/*RWD:mobile*/
 @media (max-width: 468px) {
   .media-section {
     flex-direction: column;
@@ -196,7 +192,7 @@ body {
   }
 }
 
-/* ===== 返回首頁圖標 ===== */
+/*返回首頁圖標*/
 .home-logo {
   position: fixed;
   top: 20px;
@@ -213,7 +209,7 @@ body {
   transform: scale(1.1);
 }
 
-/* ===== 漢堡選單 ===== */
+/*漢堡選單*/
 .hamburger {
   position: fixed;
   top: 20px;
@@ -288,7 +284,7 @@ body {
   }
 }
 
-/*loading動畫(按照人物出場順序依序滑入)*/
+/*loading動畫*/
 #loader {
   position: fixed;
   inset: 0;
@@ -337,7 +333,7 @@ body {
   perspective: 800px;
 }
 
-/* 角度位置方向*/
+/*角度位置方向*/
 .p1 { --tx: -35vw; --ty: -20vh; --rz: -10deg; --from: top;    animation-delay: 0.1s; z-index: 4; }
 .p2 { --tx: -10vw; --ty: -30vh; --rz: 15deg;  --from: left;   animation-delay: 0.3s; z-index: 6; }
 .p3 { --tx: 15vw;  --ty: -15vh; --rz: -8deg;  --from: right;  animation-delay: 0.5s; z-index: 3; }
@@ -347,7 +343,7 @@ body {
 .p7 { --tx: 10vw;  --ty: 25vh;  --rz: 6deg;   --from: bottom; animation-delay: 1.3s; z-index: 9; }
 .p8 { --tx: 30vw;  --ty: 15vh;  --rz: -16deg; --from: top;    animation-delay: 1.5s; z-index: 2; }
 
-/* 滑入定位 */
+/*滑入定位*/
 .p1 { animation: fromTop 1.6s ease forwards; animation-delay: 0.1s; }
 .p2 { animation: fromLeft 1.6s ease forwards; animation-delay: 0.3s; }
 .p3 { animation: fromRight 1.6s ease forwards; animation-delay: 0.5s; }
@@ -357,7 +353,7 @@ body {
 .p7 { animation: fromBottom 1.6s ease forwards; animation-delay: 1.3s; }
 .p8 { animation: fromTop 1.6s ease forwards; animation-delay: 1.5s; }
 
-/* 上下左右定位 */
+/*上下左右定位*/
 @keyframes fromTop {
   0% { opacity: 0; transform: translateY(-150vh) rotateZ(var(--rz)) scale(0.9); }
   100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
@@ -375,7 +371,7 @@ body {
   100% { opacity: 1; transform: translate(var(--tx), var(--ty)) rotateZ(var(--rz)) scale(1); }
 }
 
-/* 特效 */
+/*特效*/
 .polaroid::after {
   content: "";
   position: absolute;
@@ -400,13 +396,13 @@ body {
   }
 }
 
-/* loading淡出 */
+/*loading淡出*/
 #loader.fade-out {
   opacity: 0;
   pointer-events: none;
 }
 
-/*RWD手機版*/
+/*RWD:mobile*/
 @media screen and (max-width: 480px) {
   .polaroid-container {
     width: 100%;
