@@ -4,7 +4,7 @@
 }
 
 /*Setting*/
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@
 html, body {
   height: 100%;
   font-family: 'Zen Kurenaido', sans-serif;
-  scroll-behavior:smooth;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -38,7 +38,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index:100;
+  z-index: 100;
   pointer-events: none;
 }
 
@@ -46,8 +46,10 @@ html, body {
   position: fixed;
   inset: 0;
   background-color: rgba(255, 255, 255, 0.95);
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
   text-align: center;
   z-index: 10;
   font-size: 2rem;
@@ -61,7 +63,6 @@ html, body {
 .intro p { 
   opacity: 0;
   animation: fadeIn 1.5s ease-in-out forwards; 
-
 }
 .intro p:nth-child(2) { 
   animation-delay: 0.5s; 
@@ -119,7 +120,7 @@ html, body {
   color: #3b3b3b;
 }
 
-/*Thrid page*/
+/*Third page*/
 .section3 {
   background: url('../image/mainpage3tablet.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -127,7 +128,7 @@ html, body {
 
 /*包含圈圈的框*/
 .section3 .container {
-  max-width: 940px;
+  max-width: 1000px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 40px 30px;
@@ -135,21 +136,25 @@ html, body {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-/*框內五個圈*/
+/*圈圈區域（支援 6 個圈圈）*/
 .circle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  flex-wrap: nowrap;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
   gap: 30px 40px;
   justify-items: center;
   align-items: center;
 }
-.circle-item{
+
+.circle-item {
   text-align: center;
 }
 .circle-item p {
   margin-top: 10px;
-  color: #000; font-size: 1.1em; 
+  color: #000; 
+  font-size: 1.1em; 
 }
+
 .circle { 
   width: 120px;
   height: 120px;
@@ -159,7 +164,7 @@ html, body {
 }
 .circle img {
   width: 100%;
-  height:  100%;
+  height: 100%;
   object-fit: cover; 
 }
 .circle:hover {
@@ -167,7 +172,7 @@ html, body {
   box-shadow: 0 0 10px rgba(0,0,0,0.4); 
 }
 
-/*滑入動畫*/
+/*Animations*/
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -184,7 +189,7 @@ html, body {
 }
 
 /*RWD for iPad*/
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .container {
     padding: 30px 20px;
   }
@@ -208,6 +213,14 @@ html, body {
     font-size: 1rem;
     line-height: 1.5;
   }
+
+  .circle-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 20px;
+  }
+  .section3 .container {
+    width: 95%;
+  }
 }
 
 /*RWD for phone*/
@@ -224,6 +237,7 @@ html, body {
   .scroll-up, .scroll-down {
     font-size: 1.5rem;
   }
+
   .section2 .container {
     width: 90%;
     padding: 15px;
@@ -235,18 +249,33 @@ html, body {
     font-size: 0.9rem;
     line-height: 1.4; 
   }
+
   .section2 { 
     background-attachment: scroll; 
   }
-  .circle{
+
+  .circle {
     width: 80px;
     height: 80px; 
   }
-  /*change background when use in phone*/
-  html, body {
-  .section1 { background: url('../image/page1.jpg') no-repeat center center fixed; background-size: cover; }
-  .section2 { background: url('../image/page2.jpg') no-repeat center center fixed; background-size: cover; }
-  .section3 { background: url('../image/page3.jpg') no-repeat center center fixed; background-size: cover; }
+
+  .circle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 15px;
+  }
+
+  /* 手機版替換背景圖 */
+  .section1 { 
+    background: url('../image/page1.jpg') no-repeat center center scroll; 
+    background-size: cover; 
+  }
+  .section2 { 
+    background: url('../image/page2.jpg') no-repeat center center scroll; 
+    background-size: cover; 
+  }
+  .section3 { 
+    background: url('../image/page3.jpg') no-repeat center center scroll; 
+    background-size: cover; 
   }
 }
 
@@ -262,12 +291,11 @@ html, body {
   width: 160px;
   transition: transform 0.3s ease;
 }
-
 .home-logo img:hover {
   transform: scale(1.1);
 }
 
-/* 漢堡選單按鈕 */
+/* 漢堡選單 */
 .hamburger {
   position: fixed;
   top: 20px;
@@ -279,7 +307,7 @@ html, body {
   display: block;
 }
 
-/* 導覽選單樣式 */
+/* 導覽選單 */
 .nav-menu {
   position: fixed;
   top: 0;
@@ -312,7 +340,7 @@ html, body {
   transform: translateX(0);
 }
 
-/* 子選單（初始隱藏） */
+/* 子選單 */
 .has-submenu .submenu {
   display: none;
   max-height: 0;
@@ -324,11 +352,9 @@ html, body {
   padding-top: 0;
 }
 
-/* 子選單展開 */
 .has-submenu.active .submenu {
   max-height: 500px;
   margin-top: 10px;
-  padding-top: -100px;
 }
 
 .has-submenu > a::after {

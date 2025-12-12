@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Given 被贈與的未來</title>
+
+    <!-- Favicon 設定 -->
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Given">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+
+    <!-- 外部樣式 -->
+    <link rel="stylesheet" href="css/vote.css">
+</head>
+<body>
+
+    <!-- 載入動畫 -->
+    <div id="loader">
+        <div class="polaroid-container">
+            <img src="image/loading1.jpg" class="polaroid p1" alt="Loading Image 1">
+            <img src="image/loading2.jpg" class="polaroid p2" alt="Loading Image 2">
+            <img src="image/loading3.jpg" class="polaroid p3" alt="Loading Image 3">
+            <img src="image/loading4.jpg" class="polaroid p4" alt="Loading Image 4">
+            <img src="image/loading5.jpg" class="polaroid p5" alt="Loading Image 5">
+            <img src="image/loading6.jpg" class="polaroid p6" alt="Loading Image 6">
+            <img src="image/loading7.jpg" class="polaroid p7" alt="Loading Image 7">
+            <img src="image/loading8.jpg" class="polaroid p8" alt="Loading Image 8">
+        </div>
+    </div>
+
+    <!-- 返回首頁 Logo -->
+    <a href="index.html" class="home-logo">
+        <img src="image/main-icon.png" alt="返回首頁">
+    </a>
+
+    <!-- 漢堡菜單 -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+
+    <!-- 導航菜單 -->
+    <nav class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html#section2">故事簡介</a></li>
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">功能導覽</a>
+                <ul class="submenu">
+                    <li><a href="character.html">登場角色</a></li>
+                    <li><a href="song.html">歌曲</a></li>
+                    <li><a href="comicanimation.html">漫畫/動畫</a></li>
+                    <li><a href="bandprofile.html">樂團介紹</a></li>
+                    <li><a href="author.html">作者帳號</a></li>
+                    <li><a href="vote.html">角色投票</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 投票彈出提示框 -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p id="popup-message">已成功投給 XXX 一票！</p>
+            <span class="popup-icon">✅</span>
+        </div>
+    </div>
+
+    <!-- 頁面標題和介紹 -->
+    <header>
+        <h1>角色人氣投票</h1>
+        <p>為最喜歡的角色投票!</p>
+    </header>
+
+    <!-- 投票容器 -->
+    <main class="voting-container">
+    </main>
+
+    <!-- 投票結果展示 -->
+    <div class="result-display">
+        <h2>🗳️ 投票結果</h2>
+        <div id="results-list">
+        </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <p>失われたものすべてが新たな救済を見つけられますように。</p>
+    </footer>
+
+    <!-- 外部腳本 -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="js/vote.js"></script>
+    <script src="js/hamburger.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/loading.js"></script>
+
+</body>
+</html>
