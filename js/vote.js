@@ -16,14 +16,14 @@ const VOTES_COLLECTION = 'given_character_votes';
 
 // 4. 定義角色資料
 const characters = [
-    { id: 'mafuyu', name: '佐藤真冬', img: '../image/真冬vote.png' },
-    { id: 'ritsuka', name: '上山立夏', img: '../image/立夏vote.png' },
-    { id: 'haruki', name: '中山春樹', img: '../image/春樹vote.png' },
-    { id: 'akihiko', name: '梶秋彥', img: '../image/秋彥vote.png' },
-    { id: 'uenoyama', name: '八木玄純', img: '../image/玄純vote.png' },
-    { id: 'murata', name: '鹿島柊', img: '../image/柊vote.png' },
-    { id: 'shizusumi', name: '村田雨月', img: '../image/雨月vote.png' },
-    { id: 'yuki', name: '吉田由紀', img: '../image/由紀vote.png' }
+    { id: 'mafuyu', name: '佐藤真冬', img: 'image/真冬vote.png' },
+    { id: 'ritsuka', name: '上山立夏', img: 'image/立夏vote.png' },
+    { id: 'haruki', name: '中山春樹', img: 'image/春樹vote.png' },
+    { id: 'akihiko', name: '梶秋彥', img: 'image/秋彥vote.png' },
+    { id: 'uenoyama', name: '八木玄純', img: 'image/玄純vote.png' },
+    { id: 'murata', name: '鹿島柊', img: 'image/柊vote.png' },
+    { id: 'shizusumi', name: '村田雨月', img: 'image/雨月vote.png' },
+    { id: 'yuki', name: '吉田由紀', img: 'image/由紀vote.png' }
 ];
 
 let currentVotes = {}; 
