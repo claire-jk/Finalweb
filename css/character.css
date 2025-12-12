@@ -263,6 +263,49 @@ body {
   pointer-events: none;
 }
 
+/*RWD:ipad*/
+@media (max-width: 1024px) {
+    .container {
+        padding-top: 60px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+        margin-top: 80px;
+        margin-right: 5%;
+    }
+
+    .character-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        margin-right: 3%;
+    }
+    
+    .circle-grid {
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .circle-grid .row {
+        gap: 25px;
+        max-width: 95%;
+    }
+
+    .circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .circle p {
+        bottom: -25px;
+        font-size: 0.95em;
+    }
+    
+    .circle:hover {
+        transform: scale(1.08);
+    }
+}
+
 /*RWD:mobile*/
 @media screen and (max-width: 480px) {
   .circle {

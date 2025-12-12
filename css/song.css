@@ -159,6 +159,26 @@ body {
   }
 }
 
+/*RWD:ipad*/
+@media (max-width: 1024px) {
+    .media-section {
+        flex-direction: column;
+        gap: 40px;
+        margin: 60px auto;
+    }
+
+    .video-container {
+        width: 80%;
+        max-width: 500px;
+        height: 280px;
+    }
+    
+    .record-container {
+        width: 180px; 
+        height: 180px;
+    }
+}
+
 /*RWD:mobile*/
 @media (max-width: 468px) {
   .media-section {

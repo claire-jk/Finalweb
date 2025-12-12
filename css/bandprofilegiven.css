@@ -80,6 +80,52 @@ a:hover {
   margin-bottom: 15px;
 }
 
+/* RWD:ipad */
+@media (max-width: 1024px) {
+    .wrapper {
+        padding: 5vh 5vw;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .info-section {
+        flex: 1 1 450px;
+        padding: 40px;
+        font-size: 1.15em;
+        line-height: 1.7;
+    }
+
+    .image-section {
+        flex: 1 1 300px;
+    }
+
+    .circle-btn {
+        width: 60px;
+        height: 60px;
+        right: 20px;
+    }
+    
+    .circle-btn img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .circle-btn:hover {
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .dog-stage {
+        height: 120px;
+    }
+
+    .dog-sprite {
+        width: 100px;
+        height: 100px;
+        background-size: 400px 100px;
+    }
+}
+
 /* RWD:mobile */
 @media (max-width: 480px) {
   .wrapper {

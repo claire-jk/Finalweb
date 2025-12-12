@@ -175,10 +175,38 @@ body {
 }
 
 /* RWD:ipad */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block;
+    }
+    .container {
+        padding: 0 40px;
+        margin: 50px auto 30px auto;
+        gap: 30px;
+    }
+    .item {
+        flex: 1 1 250px;
+        max-width: none;
+    }
+    .item:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+    .p-main {
+        padding: 20px 40px;
+        margin: 0 auto;
+    }
+    .in-title {
+        font-size: 28px;
+    }
+    .swiper-container {
+        height: 500px;
+        max-width: 90%;
+    }
+    .story-text {
+        font-size: 17px;
+        padding: 20px 30px;
+    }
 }
 
 /*RWD:mobile*/

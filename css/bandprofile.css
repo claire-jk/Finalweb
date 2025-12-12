@@ -80,6 +80,48 @@ body {
   }
 }
 
+/* RWD:ipad */
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .image-block {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .left-block {
+    animation-name: slideInTop;
+  }
+
+  .right-block {
+    animation-name: slideInBottom;
+  }
+
+  @keyframes slideInTop {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInBottom {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
 /* RWD:mobile */
 @media (max-width: 480px) {
   .wrapper {

@@ -1,31 +1,17 @@
-/* =================================
-   BASE SETTINGS & BACKGROUND (背景)
-   ================================= */
 body {
-    /* 使用者設定的字體 */
     font-family: 'Cormorant Garamond', 'Zen Kurenaido', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #e9ebee; 
     color: #333;
     line-height: 1.6;
-    
-    /* 設置背景圖 */
     background-image: url('../image/givenvote.jpg'); 
     background-size: cover; 
     background-attachment: fixed; 
     background-position: center center;
-    
-    /* 新增：整體頁面淡入動畫設置 */
     transition: opacity 1s ease-in-out; 
 }
 
-/* 初始載入狀態：不透明度為 0 (隱藏) */
-body.is-loading {
-    opacity: 0;
-}
-
-/* 內容層：在背景圖之上增加半透明的黑色層，提高可讀性 */
 body::before {
     content: "";
     position: fixed;
@@ -42,7 +28,6 @@ header, footer {
     padding: 20px 0;
 }
 
-/* HEADER - 增加質感 */
 header {
     margin-bottom: 30px;
 }
@@ -62,9 +47,6 @@ header p {
     text-shadow: #795548 1px 1px 2px;
 }
 
-/* =================================
-   VOTING CARDS (投票卡片)
-   ================================= */
 .voting-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -74,7 +56,6 @@ header p {
     margin: 0 auto;
 }
 
-/* 投票卡片樣式 - 增加入場動畫 */
 @keyframes fadeInSlideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -92,12 +73,9 @@ header p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    /* 入場動畫設置 */
     animation: fadeInSlideUp 0.6s ease-out forwards;
-    opacity: 0; /* 初始隱藏 */
+    opacity: 0;
 }
-/* 讓每個卡片動畫時間錯開一點，由 JS 動態設定 animation-delay */
 
 .character-card:hover {
     transform: translateY(-8px) scale(1.02);
@@ -152,9 +130,6 @@ header p {
     transform: translateY(-2px);
 }
 
-/* =================================
-   RESULT DISPLAY (結果顯示區)
-   ================================= */
 .result-display {
     max-width: 800px;
     margin: 40px auto;
@@ -175,15 +150,12 @@ header p {
     margin-top: 0;
 }
 
-/* 投票結果項目的淡入動畫 */
 .result-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid #eee;
-    
-    /* 動畫設置 */
     opacity: 0;
     animation: fadeIn 0.5s ease-out forwards;
 }
@@ -208,7 +180,6 @@ header p {
     text-align: right;
 }
 
-/* 進度條樣式 */
 .progress-bar-container {
     width: 45%;
     height: 12px;
@@ -225,7 +196,6 @@ header p {
     transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
 }
 
-/* Footer 樣式 */
 footer {
     padding: 10px 0;
     margin-top: 30px;
@@ -234,9 +204,6 @@ footer {
     border-top: 1px solid #ddd;
 }
 
-/* =================================
-   POPUP STYLES (彈出視窗樣式)
-   ================================= */
 .popup-overlay {
     display: none; 
     position: fixed;
@@ -300,11 +267,7 @@ footer {
     cursor: pointer;
 }
 
-/* =================================
-   RESPONSIVE DESIGN (響應式設計)
-   ================================= */
-
-/* 1. 平板電腦 (Max Width 1024px) */
+/* RWD:ipad */
 @media (max-width: 1024px) {
     h1 {
         font-size: 2em;
@@ -346,7 +309,7 @@ footer {
     }
 }
 
-/* 2. 手機 (Max Width 480px) */
+/* RWD:mobile */
 @media (max-width: 480px) {
     header {
         padding: 10px 0;
@@ -392,7 +355,6 @@ footer {
         padding: 8px;
     }
     
-    /* 結果顯示區 */
     .result-display {
         padding: 15px;
         margin: 20px auto;

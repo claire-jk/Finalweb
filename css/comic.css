@@ -103,6 +103,33 @@ body {
   color: #ddd;
 }
 
+/*RWD:ipad*/
+@media (max-width: 1024px) {
+    .book-grid {
+        padding: 100px 8vw 80px;
+        column-gap: 20px;
+        row-gap: 50px;
+    }
+
+    .book {
+        max-width: 220px; 
+        height: 320px;
+    }
+
+    .book-back {
+        padding: 15px;
+    }
+    
+    .book-back h3 {
+        font-size: 1.1em;
+    }
+
+    .book-back p {
+        font-size: 0.9em;
+        line-height: 1.4em;
+    }
+}
+
 /*RWD:mobile*/
 @media (max-width: 300px) {
   body {

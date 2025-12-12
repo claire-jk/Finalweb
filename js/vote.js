@@ -1,4 +1,4 @@
-// 2. **【重要】** Firebase 專案設定 (請替換為您的專案資訊)
+/*vote.js*/
 const firebaseConfig = {
     apiKey: "AIzaSyAMbn7QRcJ5ql4KOUa6Ml21m5c3n-k_FjE",
     authDomain: "givenvote-test.firebaseapp.com",
@@ -9,12 +9,12 @@ const firebaseConfig = {
     measurementId: "G-BS16W1L2RK"
 };
 
-// 3. 初始化 Firebase 和 Firestore
+//initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const VOTES_COLLECTION = 'given_character_votes'; 
 
-// 4. 定義角色資料
+//define characters data
 const characters = [
     { id: 'mafuyu', name: '佐藤真冬', img: './image/真冬vote.png' },
     { id: 'ritsuka', name: '上山立夏', img: './image/立夏vote.png' },
@@ -28,7 +28,7 @@ const characters = [
 
 let currentVotes = {}; 
 
-// ====== Pop-up 處理函數 ======
+//pop-up
 
 /**
  * 顯示自定義 Pop-up 視窗

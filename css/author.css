@@ -145,6 +145,55 @@ body {
   transition: 0.3s;
 }
 
+/* RWD:ipad */
+@media (max-width: 1024px) {
+    .section {
+        max-width: 850px;
+        padding: 60px 30px;
+    }
+    
+    .author-card {
+        margin-top: 80px;
+        padding: 30px;
+    }
+    
+    .circle-icon {
+        width: 150px;
+        height: 150px;
+    }
+
+    .author-text h2 {
+        font-size: 2em;
+    }
+    .author-text p {
+        font-size: 1.05em;
+    }
+    
+    .works-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    
+    .works {
+        gap: 20px;
+    }
+
+    .work-item {
+        flex: 1 1 200px;
+        max-width: 200px;
+    }
+    
+    .work-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .work-item p {
+        font-size: 0.9em;
+    }
+}
+
+
 /* RWD:mobile */
 @media (max-width: 480px) {
   .wrapper {
