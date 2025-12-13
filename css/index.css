@@ -221,6 +221,18 @@ html, body {
   .section3 .container {
     width: 95%;
   }
+  .section1 {
+    background: url('../image/first page.jpg') no-repeat center center scroll; 
+    background-size: cover;
+  }
+  .section2 {
+    background: url('../image/given-story.png') no-repeat center center scroll; 
+    background-size: cover;
+  }
+  .section3 {
+    background: url('../image/mainpage3tablet.jpg') no-repeat center center scroll; 
+    background-size: cover;
+  }
 }
 
 /*RWD for phone*/
