@@ -287,6 +287,14 @@ html, body {
   }
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .section1,
+  .section2,
+  .section3 {
+    background-attachment: scroll !important;
+  }
+}
+
 /*回首頁icon*/
 .home-logo {
   position: fixed;
