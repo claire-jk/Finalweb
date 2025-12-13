@@ -28,8 +28,9 @@ html, body {
 
 /*First page*/
 .section1 {
-  background: url('../image/first page.jpg') no-repeat center center fixed;
+  background: url('../image/first page.jpg') no-repeat center center;
   background-size: cover;
+  background-attachment: scroll;
 }
 
 #leaf {
@@ -91,8 +92,9 @@ html, body {
 
 /*Second page*/
 .section2 {
-  background: url('../image/given-story.png') no-repeat center center fixed;
+  background: url('../image/given-story.png') no-repeat center center;
   background-size: cover;
+  background-attachment: scroll;
 }
 
 .section2 .container {
@@ -122,8 +124,9 @@ html, body {
 
 /*Third page*/
 .section3 {
-  background: url('../image/mainpage3tablet.jpg') no-repeat center center fixed;
+  background: url('../image/mainpage3tablet.jpg') no-repeat center center;
   background-size: cover;
+  background-attachment: scroll;
 }
 
 /*包含圈圈的框*/
@@ -188,6 +191,15 @@ html, body {
   to { opacity: 1; } 
 }
 
+/*桌機專用 fixed（穩定）*/
+@media (min-width: 1025px) {
+  .section1,
+  .section2,
+  .section3 {
+    background-attachment: fixed;
+  }
+}
+
 /*RWD for iPad*/
 @media (max-width: 1024px) {
   .container {
@@ -221,18 +233,6 @@ html, body {
   .section3 .container {
     width: 95%;
   }
-  .section1 {
-    background: url('../image/first page.jpg') no-repeat center center scroll; 
-    background-size: cover;
-  }
-  .section2 {
-    background: url('../image/given-story.png') no-repeat center center scroll; 
-    background-size: cover;
-  }
-  .section3 {
-    background: url('../image/mainpage3tablet.jpg') no-repeat center center scroll; 
-    background-size: cover;
-  }
 }
 
 /*RWD for phone*/
@@ -260,10 +260,6 @@ html, body {
   .section2 .main-area p {
     font-size: 0.9rem;
     line-height: 1.4; 
-  }
-
-  .section2 { 
-    background-attachment: scroll; 
   }
 
   .circle {
