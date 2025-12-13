@@ -9,7 +9,7 @@ body {
     background-size: cover; 
     background-attachment: fixed; 
     background-position: center center;
-    transition: opacity 1s ease-in-out; 
+    transition: opacity 1s ease-in-out;
 }
 
 body::before {
@@ -62,7 +62,7 @@ header p {
 }
 
 .character-card {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.709);
     border: none;
     border-radius: 12px;
     overflow: hidden;
@@ -169,12 +169,13 @@ header p {
     font-weight: bold;
     flex-grow: 1;
     font-size: 1.1em;
-    color: #555;
+    color: #272727;
 }
 
 .result-count {
     font-size: 1.1em;
-    color: #d32f2f;
+    color: #e7fa7d;
+    text-shadow: #000000c6  1px 1px 2px;
     font-weight: 600;
     min-width: 100px;
     text-align: right;
@@ -201,7 +202,7 @@ footer {
     margin-top: 30px;
     color: #ffffff;
     font-size: 0.9em;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #dddddd86;
 }
 
 .popup-overlay {
@@ -312,7 +313,7 @@ footer {
 /* RWD:mobile */
 @media (max-width: 480px) {
     header {
-        padding: 10px 0;
+        padding: 120px 0 70px;
     }
     
     h1 {
@@ -325,8 +326,9 @@ footer {
     
     .voting-container {
         grid-template-columns: 1fr; 
-        gap: 10px;
+        gap: 20px;
         padding: 10px;
+        margin-top: -100px;
     }
 
     .character-card {
@@ -358,6 +360,8 @@ footer {
     .result-display {
         padding: 15px;
         margin: 20px auto;
+        margin-left: 15px;
+        margin-right: 15px;
     }
     
     .result-count {
@@ -367,6 +371,11 @@ footer {
     .popup-content {
         max-width: 80%;
         padding: 20px 30px;
+    }
+
+    footer{
+        font-size: 0.8em;
+        padding: 10px 0;
     }
 }
 
