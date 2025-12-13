@@ -75,7 +75,7 @@ body {
 }
 
 .bio{
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.50);
   padding:18px;
   border-radius:12px;
   backdrop-filter: blur(4px);
