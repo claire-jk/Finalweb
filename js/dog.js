@@ -1,4 +1,4 @@
-// script.js
+// dog.js
 // 小狗自動走路、碰邊反彈、點擊或觸控可跳躍
 (() => {
   const dog = document.querySelector('.dog-sprite');
