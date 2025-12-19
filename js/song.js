@@ -4,6 +4,7 @@ const record = document.getElementById("record");
 const youtubeFrame = document.getElementById("youtube-frame");
 const songCircles = document.querySelectorAll(".song-circle");
 const musicPlayer = document.getElementById("music-player");
+const burger =  document.getElementsByClassName("hamburger");
 
 // 記錄目前播放的影片
 let currentVideo = "";
@@ -19,6 +20,7 @@ songCircles.forEach(circle => {
     const videoUrl = circle.getAttribute("data-video");
     const bgDesktop = circle.getAttribute("data-bg-desktop");
     const bgMobile = circle.getAttribute("data-bg-mobile");
+    burger[0].style.color = '#000000'
 
     // 如果再次點擊同一首歌 → 停止旋轉 & 暫停影片
     if (currentVideo === videoUrl && record.classList.contains("playing")) {
