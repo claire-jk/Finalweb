@@ -410,3 +410,17 @@ body {
     }
   }
 }
+
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+#page-transition.hidden {
+  opacity: 0;
+}

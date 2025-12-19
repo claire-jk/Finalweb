@@ -1,39 +1,23 @@
-//只撥放一次loading動畫
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("a[href]").forEach(link => {
-    const href = link.getAttribute("href");
+//動畫
+window.addEventListener('DOMContentLoaded', () => {
+  const fromSidebar = sessionStorage.getItem('fromSidebar');
+  const transition = document.getElementById('page-transition');
 
-    if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("javascript:")) return;
-    if (link.target === "_blank") return;
-    if (link.hostname !== location.hostname) return;
+  if (!transition) return;
 
-    link.addEventListener("click", e => {
-      e.preventDefault();
+  if (fromSidebar) {
+    // 確保遮罩一開始是顯示的
+    transition.classList.remove('hidden');
 
-      //告訴下一頁不要再播一次loading
-      sessionStorage.setItem("skipNextLoader", "true");
-
-      const loader = document.getElementById("loader");
-      if (loader) {
-        loader.classList.remove("fade-out");
-        loader.style.display = "flex";
-      }
-
-      const delay = 2500;
-      setTimeout(() => {
-        window.location.href = href;
-      }, delay);
+    // 下一個 frame 才淡出
+    requestAnimationFrame(() => {
+      transition.classList.add('hidden');
     });
-  });
-});
 
-//是否跳過loading動畫
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  const skip = sessionStorage.getItem("skipNextLoader") === "true";
-
-  if (loader && skip) {
-    loader.style.display = "none";
-    sessionStorage.removeItem("skipNextLoader");
+    // 關鍵：立刻清除，避免回上一頁 softlock
+    sessionStorage.removeItem('fromSidebar');
+  } else {
+    // 非 sidebar 進來的，直接隱藏
+    transition.classList.add('hidden');
   }
 });

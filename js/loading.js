@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
   }, 3500);
 });
 
-document.querySelectorAll("a").forEach(link => {
+/*document.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", e => {
     const href = link.getAttribute("href");
     if (href && !href.includes("#")) {
@@ -26,5 +26,11 @@ document.querySelectorAll("a").forEach(link => {
         window.location.href = href;
       }, 2500);
     }
+  });
+});*/
+
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', () => {
+    sessionStorage.setItem('fromSidebar', 'true');
   });
 });
