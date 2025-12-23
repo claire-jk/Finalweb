@@ -82,7 +82,7 @@ body {
 }
 .bio p{
   margin-bottom:12px;
-  color: #ffffff;
+  color: #000000;
 }
 .bio ul{
   list-style: none;
@@ -95,7 +95,7 @@ body {
   padding:6px 10px;
   border-radius:8px;
   font-size:14px;
-  color: #ffffff;
+  color: #000000;
 }
 
 /*右側圓形按鈕*/
